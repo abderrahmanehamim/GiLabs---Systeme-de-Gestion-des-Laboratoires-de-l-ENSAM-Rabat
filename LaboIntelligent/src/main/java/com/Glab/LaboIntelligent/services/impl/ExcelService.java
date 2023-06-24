@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.Glab.LaboIntelligent.helper.ExcelUploader;
 import com.Glab.LaboIntelligent.models.AppUser;
 import com.Glab.LaboIntelligent.models.Etudiant;
 import com.Glab.LaboIntelligent.repositories.AppUserRepository;
@@ -21,10 +22,10 @@ public class ExcelService {
 	AppUserRepository appUserRepository;
 	  public void saveExcelEtudiant(MultipartFile file) throws IOException {
 	 
-	 //     List<Etudiant> Etudiants = ExcelUploader.Etudiants(file.getInputStream());
-	   //   etudiantrepository.saveAll(Etudiants);
-	    //List<AppUser> Users = ExcelUploader.users(file.getInputStream());
-	    // appUserRepository.saveAll(Users);
+	      List<Etudiant> Etudiants = ExcelUploader.Etudiants(file.getInputStream());
+	      etudiantrepository.saveAll(Etudiants);
+	    List<AppUser> Users = ExcelUploader.users(file.getInputStream());
+	     appUserRepository.saveAll(Users);
  	  }
 
 	  public List<Etudiant> getAllTutorials() {

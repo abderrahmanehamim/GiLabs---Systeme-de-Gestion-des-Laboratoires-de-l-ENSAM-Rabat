@@ -289,7 +289,7 @@
         <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           
           <li>
-            <a href="Meca.html">
+            <a href="/Admin/meca">
               <i class="bi bi-circle"></i><span>Génie Mecanique</span>
             </a>
           </li>
@@ -430,6 +430,60 @@
         </ol>
       </nav>
     </div><!-- End Page Title -->
+
+			<div class="col-md-6 col-xs-12 spacer col-md-offset-3">
+				<div  class="panel panel-default">
+
+
+					<!-- <div class="panel-heading">Saisie des Etudiants </div> -->
+					<div  class="panel-body">
+
+						<form th:action="@{/Admin/uploadFileEtudiant}" method="post"
+							enctype="multipart/form-data">
+
+							<div class="form-group">
+
+								<label class="control-label">importer le fichier des
+									etudiants</label> <input type="file" name="file" accept=".xls,.xlsx"
+									class="form-control" />
+
+								
+								<button type="submit" class="btn btn-success">
+									<span class="glyphicon glyphicon-upload"></span> Uploader le fichier
+								</button>
+
+							</div>
+
+						</form>
+					</div>
+				<div  class="panel-body">
+						<form th:action="@{/Admin/uploadFileEm}" method="post"
+							enctype="multipart/form-data">
+
+							<div class="form-group">
+
+								<label class="control-label">importer le fichier des
+									professeurs </label> <input type="file" name="file"
+									accept=".xls,.xlsx" class="form-control" />
+
+								<!-- <input
+      type="submit" value="Upload file"  /> -->
+								<button type="submit" class="btn btn-success">
+									<span class="glyphicon glyphicon-upload"></span> Uploader le fichier
+								</button>
+
+								<!-- <p>Upload icon on a styled link button:
+        <a href="#" class="btn btn-info btn-lg">
+          <span class="glyphicon glyphicon-upload"></span> Upload
+        </a>
+      </p>  -->
+
+						
+
+						</form>
+</div>
+
+</div>
 
   </main><!-- End #main -->
 
