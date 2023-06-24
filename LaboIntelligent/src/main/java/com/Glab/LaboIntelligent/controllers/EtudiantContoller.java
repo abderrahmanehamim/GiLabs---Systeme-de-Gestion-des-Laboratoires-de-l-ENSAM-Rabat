@@ -23,13 +23,7 @@ public class EtudiantContoller {
 		
 		
 	}
-	@GetMapping("/Admin")
-	 public String admin(Model model) {
-		model.addAttribute("etudiants",etudiantService.getAllEtudiant());
-		
-		return "index";
-		 
-	 }
+
 		
 		@GetMapping("/students")
 		 public String listEtudiant(Model model) {

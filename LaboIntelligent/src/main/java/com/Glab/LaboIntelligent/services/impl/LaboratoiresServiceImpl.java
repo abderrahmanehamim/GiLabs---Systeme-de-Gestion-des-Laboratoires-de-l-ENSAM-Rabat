@@ -27,4 +27,10 @@ public class LaboratoiresServiceImpl implements LaboratoireService{
 		return laboratoiresRepository.findById(idlabs).get() ;
 	}
 
+	@Override
+	public List<Laboratoires> saveAll(List<Laboratoires> laboratories) {
+		// TODO Auto-generated method stub
+		return laboratoiresRepository.saveAll(laboratories);
+	}
+
 }

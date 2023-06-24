@@ -11,6 +11,7 @@ public interface LaboratoireService {
 	Laboratoires getLaboratoiresById(Long idlabs);
 
 	
-	
+    List<Laboratoires> saveAll(List<Laboratoires> laboratories);
+
 	
 }

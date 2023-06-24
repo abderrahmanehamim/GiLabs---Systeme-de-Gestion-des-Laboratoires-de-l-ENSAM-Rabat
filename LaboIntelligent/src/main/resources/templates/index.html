@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 
 <head>
   <meta charset="utf-8">
@@ -45,7 +45,7 @@
 
     <div class="d-flex align-items-center justify-content-between">
       <a href="index.html" class="logo d-flex align-items-center">
-        <img src="../static/assets/img/logo.png" alt="">
+        <img src="/static/assets/img/logo.png" alt="">
         <span class="d-none d-lg-block">GiLabs</span>
       </a>
       <i class="bi bi-list toggle-sidebar-btn"></i>
@@ -289,37 +289,37 @@
         <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           
           <li>
-            <a href="Meca.html">
+            <a th:href="@{/meca}">
               <i class="bi bi-circle"></i><span>Génie Mecanique</span>
             </a>
           </li>
           <li>
-            <a href="Math.html">
+            <a th:href="@{/math}">
               <i class="bi bi-circle"></i><span>Mathematiques Appliquees</span>
             </a>
           </li>
           <li>
-            <a href="Info.html">
+            <a th:href="@{/info}">
               <i class="bi bi-circle"></i><span>Génie Informatique</span>
             </a>
           </li>
           <li>
-            <a href="Elect.html">
+            <a th:href="@{/elect}">
               <i class="bi bi-circle"></i><span>Génie Electrique</span>
             </a>
           </li>
           <li>
-            <a href="Langues.html">
+            <a th:href="@{/langue}">
               <i class="bi bi-circle"></i><span>Langues/Communication</span>
             </a>
           </li>
           <li>
-            <a href="Eco.html">
+            <a th:href="@{/eco}">
               <i class="bi bi-circle"></i><span>Génie Economie et Management</span>
             </a>
           </li>
           <li>
-            <a href="Biom.html">
+            <a th:href="@{/biom}">
               <i class="bi bi-circle"></i><span>Génie Biomédical</span>
             </a>
           </li>
@@ -328,7 +328,7 @@
       </li><!-- End Components Nav -->
 
       <li class="nav-item">
-        <a class="nav-link collapsed"  href="Laboratoires.html">
+        <a class="nav-link collapsed"  th:href="@{/laboratoires}">
           <i class="bi bi-journal-text"></i>
           <span>Laboratoires</span>
         </a>
@@ -341,12 +341,12 @@
         </a>
         <ul id="tables-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
-            <a href="AllArticles.html">
+            <a th:href="@{/articles}">
               <i class="bi bi-circle"></i><span>Tout les Articles</span>
             </a>
           </li>
           <li>
-            <a href="tables-data.html">
+            <a th:href="@{/Articlelabo}">
               <i class="bi bi-circle"></i><span>Par Laboratoires</span>
             </a>
           </li>
@@ -354,13 +354,13 @@
       </li><!-- End Tables Nav -->
 
        <li class="nav-item">
-          <a class="nav-link collapsed" data-bs-target="#charts-nav" data-bs-toggle="collapse" href="#">
+          <a class="nav-link collapsed" data-bs-target="#charts-nav" data-bs-toggle="collapse" th:href="@{/travauxpratique}">
             <i class="bi bi-bar-chart"></i><span>Travaux Pratiques</span>
           </a>
         </li><!-- End Charts Nav -->
   
         <li class="nav-item">
-          <a class="nav-link collapsed" data-bs-target="#icons-nav" data-bs-toggle="collapse" href="#">
+          <a class="nav-link collapsed" data-bs-target="#icons-nav" data-bs-toggle="collapse" th:href="@{/formations}">
             <i class="bi bi-gem"></i><span>Formations</span>
           </a>
         
@@ -369,7 +369,7 @@
       <li class="nav-heading">Pages</li>
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="users-profile.html">
+        <a class="nav-link collapsed" th:href="@{/userprofile}">
           <i class="bi bi-person"></i>
           <span>Profile</span>
         </a>
@@ -383,20 +383,20 @@
       </li><!-- End F.A.Q Page Nav -->
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="pages-contact.html">
+        <a class="nav-link collapsed" th:href="@{/contact}">
           <i class="bi bi-envelope"></i>
           <span>Contact</span>
         </a>
       </li><!-- End Contact Page Nav -->
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="#">
+        <a class="nav-link collapsed" th:href="@{/adduser}">
           <i class="bi bi-card-list"></i>
           <span>Ajouter Utilisateur</span>
         </a>
       </li><!-- End Register Page Nav -->
       <li class="nav-item">
-        <a class="nav-link collapsed" href="Addarticle.html">
+        <a class="nav-link collapsed" th:href="@{/articles/new}">
           <i class="bi bi-card-list"></i>
           <span>Ajouter Article</span>
         </a>
@@ -432,6 +432,7 @@
     </div><!-- End Page Title -->
 
   </main><!-- End #main -->
+  
 
   <!-- ======= Footer ======= -->
   <footer id="footer" class="footer">

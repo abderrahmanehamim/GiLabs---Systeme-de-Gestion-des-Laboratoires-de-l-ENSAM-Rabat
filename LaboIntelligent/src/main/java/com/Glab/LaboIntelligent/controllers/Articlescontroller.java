@@ -7,10 +7,12 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+
 import com.Glab.LaboIntelligent.models.Articles;
 import com.Glab.LaboIntelligent.services.ArticlesService;
 
 @Controller
+
 public class Articlescontroller {
 	private ArticlesService articleService;
 
@@ -23,16 +25,15 @@ public class Articlescontroller {
 	@GetMapping("/articles")
 	public String listArticle(Model model) {	
 		model.addAttribute("articles", articleService.getAllArticles());
-		return "articles";
+		return "AllArticles";
 	}
+	
 	
 	@GetMapping("/articles/new")
 	public String createArticleForm(Model model) {
-		
 	Articles article = new Articles();
 	model.addAttribute("article", article);
-	
-	return "create_article";
+	return "Addarticle";
 	}
 	
 	
