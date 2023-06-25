@@ -9,7 +9,10 @@ public interface DepartmentService {
 	List<Departments> getAllDepartment();
 	
 	
-	Departments getDepartmentById(Long iddepart);
+	static Departments getDepartmentById(Long iddepart) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 
 	Departments saveDepartments(List<Departments> departmentsList);

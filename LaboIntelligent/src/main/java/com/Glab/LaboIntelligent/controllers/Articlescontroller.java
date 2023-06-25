@@ -1,15 +1,20 @@
 package com.Glab.LaboIntelligent.controllers;
 
+import java.io.IOException;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.Glab.LaboIntelligent.models.Articles;
 import com.Glab.LaboIntelligent.services.ArticlesService;
+import java.io.File;
+
 
 @Controller
 
@@ -29,19 +34,42 @@ public class Articlescontroller {
 	}
 	
 	
-	@GetMapping("/articles/new")
+	@GetMapping("/addarticles")
 	public String createArticleForm(Model model) {
-	Articles article = new Articles();
+/*	Articles article = new Articles();
+	article.setArticlenom("article");
+	article.setCategorie("cat");
+	article.setDescription("descp");
+	article.setDocumentation("documentation");
+	article.setDomaine("Domain");
+	article.setIdarticles(123456L);
+	article.setLaboratoires(null);
+	article.setQuantite(22);
+	article.setReference(null);
+	article.setVisuel(null);
 	model.addAttribute("article", article);
-	return "Addarticle";
+	*/
+	//	model.addAttribute("articles", articleService.getAllArticles());
+     return "Addarticle";
 	}
+    @PostMapping("/articles")
+    public String saveArticle(@ModelAttribute("article") Articles article,
+                              @RequestParam("file") MultipartFile file) throws IOException {
+        // Save the file
+        if (!file.isEmpty()) {
+            String fileName = file.getOriginalFilename();
+            String filePath = "gilab\\LaboIntelligent\\src\\main\\resources\\static\\articleimg" + fileName; // Update the path to your images folder
+            File dest = new File(filePath);
+            file.transferTo(dest);
+            article.setVisuel(fileName); // Set the file name in the model object
+        }
+
+        // Save the article
+        articleService.saveArticle(article);
+        return "redirect:/articles";
+    }
 	
-	
-	@PostMapping("/articles")
-	public String saveArticle(@ModelAttribute("article") Articles article) {
-		articleService.saveArticle(article);
-		return "redirect:/articles";
-	}
+
 	
 	@GetMapping("/articles/edit/{id}")
 	public String editArticlesForm(@PathVariable Long id, Model model) {
