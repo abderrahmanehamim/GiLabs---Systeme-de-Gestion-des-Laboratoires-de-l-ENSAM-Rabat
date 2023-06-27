@@ -2,19 +2,19 @@ package com.Glab.LaboIntelligent.services;
 
 import java.util.List;
 
-import com.Glab.LaboIntelligent.models.Departments;
+import com.Glab.LaboIntelligent.models.Departement;
 
 public interface DepartmentService {
 	
-	List<Departments> getAllDepartment();
+	List<Departement> getAllDepartment();
 	
 	
-	static Departments getDepartmentById(Long iddepart) {
+	static Departement getDepartmentById(Long iddepart) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 
-	Departments saveDepartments(List<Departments> departmentsList);
+	void saveDepartments(List<Departement> departmentsList);
 
 }

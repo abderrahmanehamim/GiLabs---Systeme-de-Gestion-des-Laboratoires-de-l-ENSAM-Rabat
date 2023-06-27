@@ -9,29 +9,30 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+
 @Entity
 @Table(name="Departments")
-public class Departments {
+public class Departement {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long iddepart;
 	
 	private String DepartmentName;
 	
+	@OneToMany(mappedBy = "Dep")
+	private List<Laboratoire> laboratoires;
 	
+	@OneToMany(mappedBy = "Dep")
+	private List<Etudiant> etudiants;
 	
-    @OneToMany(mappedBy = "departments")
-	private List<Laboratoires> laboratoire;
     
-    
-	public Departments() {
+	public Departement() {
 	}
-	public Departments(long iddepart, String departmentName, List<Laboratoires> laboratoire) {
+	public Departement(long iddepart, String departmentName, List<Laboratoire> laboratoires) {
 		super();
 		this.iddepart = iddepart;
 		DepartmentName = departmentName;
-		this.laboratoire = laboratoire;
+		this.laboratoires = laboratoires;
 	}
 	/**
 	 * @return the iddepart
@@ -60,15 +61,24 @@ public class Departments {
 	/**
 	 * @return the laboratoire
 	 */
-	public List<Laboratoires> getLaboratoire() {
-		return laboratoire;
+	public List<Laboratoire> getLaboratoire() {
+		return laboratoires;
 	}
 	/**
 	 * @param laboratoire the laboratoire to set
 	 */
-	public void setLaboratoire(List<Laboratoires> laboratoire) {
-		this.laboratoire = laboratoire;
+	public void setLaboratoire(List<Laboratoire> laboratoires) {
+		this.laboratoires = laboratoires;
 	}
 	
+	public List<Etudiant> getEtudiants() {
+		return etudiants;
+	}
+	/**
+	 * @param laboratoire the laboratoire to set
+	 */
+	public void setEtudiants(List<Etudiant> etudiants) {
+		this.etudiants = etudiants;
+	}
 	
 }

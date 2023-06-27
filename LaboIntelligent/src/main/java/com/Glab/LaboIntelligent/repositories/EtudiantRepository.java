@@ -8,7 +8,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
-import com.Glab.LaboIntelligent.models.Departments;
+import com.Glab.LaboIntelligent.models.Departement;
 import com.Glab.LaboIntelligent.models.Etudiant;
 
 
@@ -24,7 +24,7 @@ public interface EtudiantRepository extends JpaRepository<Etudiant ,Long>{
 	public Etudiant chercherEtudiantByEmail(@Param("email") String email);
 
 	@Query("select et from   Etudiant et  where et.Dep like :dpt")
-	public List<Etudiant> listEtudiantparDep(@Param("dpt") Departments dpt);
+	public List<Etudiant> listEtudiantparDep(@Param("dpt") Departement dpt);
 	@Query("select et from   Etudiant et  where et.semestre like :sem")
 	public List<Etudiant> listEtudiantparSem(@Param("sem") String sem);
 	@Query("select et from   Etudiant et  where et.semestre like :sem")
