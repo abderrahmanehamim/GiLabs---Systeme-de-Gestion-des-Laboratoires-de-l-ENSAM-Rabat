@@ -2,6 +2,7 @@ package com.Glab.LaboIntelligent.controllers;
 
 import java.io.IOException;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,18 +13,22 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.Glab.LaboIntelligent.models.Articles;
+import com.Glab.LaboIntelligent.repositories.ArticlesRepository;
 import com.Glab.LaboIntelligent.services.ArticlesService;
+import com.Glab.LaboIntelligent.services.impl.ArticlesServiceImpl;
+
 import java.io.File;
 
 
 @Controller
 
 public class Articlescontroller {
-	private ArticlesService articleService;
-
-	public Articlescontroller(ArticlesService articleService) {
+	@Autowired
+	private ArticlesServiceImpl articleService;
+@Autowired
+	private ArticlesRepository articlesRepository;
+	public Articlescontroller() {
 		super();
-		this.articleService = articleService;
 	}
 	
 	
@@ -52,22 +57,25 @@ public class Articlescontroller {
 	//	model.addAttribute("articles", articleService.getAllArticles());
      return "Addarticle";
 	}
-    @PostMapping("/articles")
-    public String saveArticle(@ModelAttribute("article") Articles article,
-                              @RequestParam("file") MultipartFile file) throws IOException {
-        // Save the file
-        if (!file.isEmpty()) {
-            String fileName = file.getOriginalFilename();
-            String filePath = "gilab\\LaboIntelligent\\src\\main\\resources\\static\\articleimg" + fileName; // Update the path to your images folder
-            File dest = new File(filePath);
-            file.transferTo(dest);
-            article.setVisuel(fileName); // Set the file name in the model object
-        }
+	  @PostMapping("/addarticles")
+	    public String saveArticle(@ModelAttribute("article") Articles article,
+	                              @RequestParam("file") MultipartFile file) throws IOException {
+	        // Save the file
+	        if (!file.isEmpty()) {
+	            String fileName = file.getOriginalFilename();
+	            String filePath = "gilab\\LaboIntelligent\\src\\main\\resources\\static\\articleimg" + fileName; // Update the path to your images folder
+	            File dest = new File(filePath);
+	            file.transferTo(dest);
+	            article.setVisuel(fileName); // Set the file name in the model object
+	        }
 
-        // Save the article
-        articleService.saveArticle(article);
-        return "redirect:/articles";
-    }
+	        // Save the article
+	        articleService.saveArticle(article);
+	        return "redirect:/articles";
+	    }
+		
+
+
 	
 
 	

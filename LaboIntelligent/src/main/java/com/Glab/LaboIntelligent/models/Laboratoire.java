@@ -2,6 +2,7 @@ package com.Glab.LaboIntelligent.models;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -10,51 +11,43 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
 @Entity
 
 @Table(name="laboratoires")
 
 
-public class Laboratoires {
+public class Laboratoire {
 	
 	
 	
 	@Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-	private  String Laboname ;
 	private String Code ;
+	private  String Laboname ;
 	private String activite;
 	
-	@ManyToOne
-	@JoinColumn(name="iddepart")
-	private Departments departments;
-	
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "codedpt")
+	private Departement Dep;
 	
 	@OneToMany(mappedBy = "laboratoire")
 	private List<Articles> articles;
 	
-	public Laboratoires() {
+	public Laboratoire() {
 	}
 
-	public Laboratoires(long idlabs, String laboname, String code, String activite, Departments departments,
+	public Laboratoire(long idlabs, String laboname, String code, String activite, Departement department,
 			List<Articles> articles, List<String> travauxpratiques) {
 		super();
-		this.id = idlabs;
+	//	this.id = idlabs;
 		Laboname = laboname;
 		Code = code;
 		this.activite = activite;
-		this.departments = departments;
+		this.Dep = department;
 		this.articles = articles;
 	}
 
-	public long getIdlabs() {
-		return id;
-	}
 
-	public void setIdlabs(long idlabs) {
-		this.id = idlabs;
-	}
 
 	public String getLaboname() {
 		return Laboname;
@@ -95,15 +88,15 @@ public class Laboratoires {
 	/**
 	 * @return the departments
 	 */
-	public Departments getDepartments() {
-		return departments;
+	public Departement getDepartments() {
+		return Dep;
 	}
 
 	/**
 	 * @param departments the departments to set
 	 */
-	public void setDepartments(Departments departments) {
-		this.departments = departments;
+	public void setDepartments(Departement department) {
+		this.Dep = department;
 	}
 
 	/**

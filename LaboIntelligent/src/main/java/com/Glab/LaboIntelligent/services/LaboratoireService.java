@@ -2,16 +2,16 @@ package com.Glab.LaboIntelligent.services;
 
 import java.util.List;
 
-import com.Glab.LaboIntelligent.models.Laboratoires;
+import com.Glab.LaboIntelligent.models.Laboratoire;
 
 public interface LaboratoireService {
 	
-	List<Laboratoires> getAllLaboratoire();
+	List<Laboratoire> getAllLaboratoire();
 	
-	Laboratoires getLaboratoiresById(Long idlabs);
+	Laboratoire getLaboratoiresById(Long idlabs);
 
 	
-    List<Laboratoires> saveAll(List<Laboratoires> laboratories);
+    List<Laboratoire> saveAll(List<Laboratoire> laboratories);
 
 	
 }

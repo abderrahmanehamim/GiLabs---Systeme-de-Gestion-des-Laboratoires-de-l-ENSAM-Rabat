@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import com.Glab.LaboIntelligent.models.Laboratoires;
+import com.Glab.LaboIntelligent.models.Laboratoire;
 import com.Glab.LaboIntelligent.repositories.LaboratoiresRepository;
 import com.Glab.LaboIntelligent.services.LaboratoireService;
 @Service
@@ -15,20 +15,20 @@ public class LaboratoiresServiceImpl implements LaboratoireService{
 	private LaboratoiresRepository laboratoiresRepository;
 	
 	@Override
-	public List<Laboratoires> getAllLaboratoire() {
+	public List<Laboratoire> getAllLaboratoire() {
 		
 		
 		return this.laboratoiresRepository.findAll();
 	}
 
 	@Override
-	public Laboratoires getLaboratoiresById(Long idlabs) {
+	public Laboratoire getLaboratoiresById(Long idlabs) {
 		
 		return laboratoiresRepository.findById(idlabs).get() ;
 	}
 
 	@Override
-	public List<Laboratoires> saveAll(List<Laboratoires> laboratories) {
+	public List<Laboratoire> saveAll(List<Laboratoire> laboratories) {
 		// TODO Auto-generated method stub
 		return laboratoiresRepository.saveAll(laboratories);
 	}

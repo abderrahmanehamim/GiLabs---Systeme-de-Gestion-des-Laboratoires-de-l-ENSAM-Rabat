@@ -1,5 +1,6 @@
 package com.Glab.LaboIntelligent.models;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -25,15 +26,15 @@ public class Articles {
 	private String Documentation;
 	private String description ;
 	
-	 @ManyToOne
-	    @JoinColumn(name = "laboratoire_id")
-	    private Laboratoires laboratoire;
+	@ManyToOne(cascade = CascadeType.ALL)
+	    @JoinColumn(name = "Code")
+	    private Laboratoire laboratoire;
 
  
 public Articles() {
 }
 public Articles(Long idarticles, String articlenom, String domaine, String reference, String categorie,
-		Integer quantite, String visuel, String documentation, String description, Laboratoires laboratoires) {
+		Integer quantite, String visuel, String documentation, String description, Laboratoire laboratoires) {
 	super();
 	this.id = idarticles;
 	this.articlenom = articlenom;
@@ -100,10 +101,10 @@ public String getDescription() {
 public void setDescription(String description) {
 	this.description = description;
 }
-public Laboratoires getLaboratoires() {
+public Laboratoire getLaboratoires() {
 	return laboratoire;
 }
-public void setLaboratoires(Laboratoires laboratoires) {
+public void setLaboratoires(Laboratoire laboratoires) {
 	this.laboratoire = laboratoires;
 }
 	

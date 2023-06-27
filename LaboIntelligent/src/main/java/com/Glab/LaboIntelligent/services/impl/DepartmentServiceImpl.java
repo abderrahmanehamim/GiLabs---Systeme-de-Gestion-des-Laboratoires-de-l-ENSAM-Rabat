@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import com.Glab.LaboIntelligent.models.Departments;
+import com.Glab.LaboIntelligent.models.Departement;
 import com.Glab.LaboIntelligent.repositories.DepartmentRepository;
 import com.Glab.LaboIntelligent.services.DepartmentService;
 
@@ -19,7 +19,7 @@ public class DepartmentServiceImpl implements DepartmentService {
 	
 	
 	@Override
-	public List<Departments> getAllDepartment() {
+	public List<Departement> getAllDepartment() {
 		return departmentRepository.findAll();
 	}
 
@@ -27,7 +27,7 @@ public class DepartmentServiceImpl implements DepartmentService {
 	
 	
 	
-	public Departments getDepartmentById(Long iddepart) {
+	public Departement getDepartmentById(Long iddepart) {
 		
 		return departmentRepository.findById(iddepart).get();
 	}
@@ -37,10 +37,14 @@ public class DepartmentServiceImpl implements DepartmentService {
 
 
 	@Override
-	public Departments saveDepartments(List<Departments> departmentsList) {
+	public void saveDepartments(List<Departement> departmentsList) {
 		// TODO Auto-generated method stub
-		return departmentRepository.save(departmentsList);
+		  for(Departement dep:departmentsList) {
+	    	   departmentRepository.save(dep);
+	       }
 	}
+	
+	
 
 
 

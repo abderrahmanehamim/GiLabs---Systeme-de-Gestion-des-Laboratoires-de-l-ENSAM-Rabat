@@ -63,7 +63,7 @@ public class ExcelUploader {
 				Collection<AppRole> listrole =new ArrayList<AppRole>();
 				listrole.add(r1);
 				Etudiant student = new Etudiant();
-				Departments departemet = new Departments();
+				Departement departemet = new Departement();
 				BCryptPasswordEncoder bcryptPaswwordEncoder=new BCryptPasswordEncoder(10, new SecureRandom());
 				int cellIdx = 0;
 				while (cellsInRow.hasNext()) {

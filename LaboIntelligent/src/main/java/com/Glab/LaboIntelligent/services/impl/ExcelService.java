@@ -22,8 +22,16 @@ public class ExcelService {
 	AppUserRepository appUserRepository;
 	  public void saveExcelEtudiant(MultipartFile file) throws IOException {
 	 
-	      List<Etudiant> Etudiants = ExcelUploader.Etudiants(file.getInputStream());
-	      etudiantrepository.saveAll(Etudiants);
+		  List<Etudiant> etudiants = ExcelUploader.Etudiants(file.getInputStream());
+		  for (Etudiant etd : etudiants) {
+		      if ((etd.getDep().getIddepart() > 0) && (etd.getDep().getIddepart() < 8)) {
+		          etudiantrepository.save(etd);
+		          System.out.println("Etudiant: " + etd.getNom().toUpperCase() + " " + etd.getPrenom() + " a été ajouté avec succès");
+		      } else {
+		          System.out.println("Etudiant: " + etd.getNom().toUpperCase() + " " + etd.getPrenom() + " n'appartient à aucun département");
+		      }
+		  }
+
 	    List<AppUser> Users = ExcelUploader.users(file.getInputStream());
 	     appUserRepository.saveAll(Users);
  	  }

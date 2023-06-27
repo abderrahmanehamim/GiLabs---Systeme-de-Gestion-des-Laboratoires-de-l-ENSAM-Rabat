@@ -17,11 +17,11 @@ public class Etudiant  implements Serializable {
 	private String email;
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "Codedpt")
-	private Departments Dep;
+	private Departement Dep;
 	
 	private String semestre;
 
-	public Etudiant(Long matricule, String nom, String prenom, String email, Departments dep, String semestre) {
+	public Etudiant(Long matricule, String nom, String prenom, String email, Departement dep, String semestre) {
 		super();
 		this.matricule = matricule;
 		this.nom = nom;
@@ -68,7 +68,7 @@ public class Etudiant  implements Serializable {
 		this.email = email;
 	}
 
-	public Departments getDep() {
+	public Departement getDep() {
 		return Dep;
 	}
 
@@ -76,7 +76,7 @@ public class Etudiant  implements Serializable {
 	 * public void setDep(Departement dep) { Dep.setCodedpt = dep; }
 	 */
 	
-	public void setDep(Departments dep) {
+	public void setDep(Departement dep) {
 		Dep = dep;
 	}
 
