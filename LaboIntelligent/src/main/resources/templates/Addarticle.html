@@ -421,65 +421,66 @@
   </aside><!-- End Sidebar-->
     <main id="main" class="main">
     <div class="row">
-      <section class="section dashboard">
-       <form  method="POST">
-  <div class="form-group">
-    <label for="inputAddress">Nom d'Article</label>
-    <input type="text"  class="form-control" id="inputAddress" placeholder="Article Nom">
-  </div>
+<section class="section dashboard">
+  <form th:action="@{/addarticles}" th:object="${article}" method="POST" enctype="multipart/form-data">
+    <div class="form-group">
+      <label for="inputAddress">Nom d'Article</label>
+      <input type="text" class="form-control" id="inputAddress" placeholder="Article Nom" th:field="*{articlenom}">
+    </div>
 
-  <div class="custom-file">
-    <input type="file" class="custom-file-input" id="customFile">
-    <label class="custom-file-label" for="customFile">Image d'article</label>
-  </div>
-  
-  <div class="form-group">
-    <label for="exampleFormControlTextarea1">Documentation</label>
-    <textarea class="form-control"  id="exampleFormControlTextarea1" rows="3"></textarea>
-  </div>
-  <div class="form-group">
-    <label for="inputAddress2">domaine</label>
-    <input type="text" class="form-control"  id="inputAddress2" placeholder="">
-  </div>
-  <div class="form-row">
-    <div class="form-group col-md-6">
-      <label for="inputCity">catégorie</label>
-      <input type="text" class="form-control" id="inputCity">
+    <div class="custom-file">
+      <input type="file" class="custom-file-input" id="customFile" th:field="*{visuel}">
+      <label class="custom-file-label" for="customFile">Image d'article</label>
     </div>
-    <div class="form-group col-md-4">
-      <label for="inputState">Departements</label>
-      <select id="inputState" class="form-control">
-        <option selected>Departements</option>
-        <option>Génie Biomédical</option>
-        <option>Génie Economie et Management</option>
-        <option>Langues/Communication</option>
-        <option>Génie Informatique</option>
-        <option>Génie Electrique</option>
-        <option>Mathematiques Appliquees</option>
-        <option>Génie Mecanique</option>
-        
-      </select>
+
+    <div class="form-group">
+      <label for="exampleFormControlTextarea1">Documentation</label>
+      <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" th:field="*{documentation}"></textarea>
     </div>
-    <div class="form-group col-md-4">
-      <label for="inputState">Laboratoires</label>
-      <select id="inputState" class="form-control">
-        <option selected>Laboratoires</option>
-        <option>Labo 1</option>
-        <option>Labo 2</option>
-        <option>Labo 3</option>
-        <option>Labo 4</option>
-      </select>
-    </div>
-    <div class="form-group col-md-2">
-      <label for="inputZip">réference</label>
-      <input type="text" class="form-control" id="inputZip">
-    </div>
-  </div>
-  
     
-  <button type="submit" class="btn btn-primary">Ajouter</button>
-</form>
-      </section>
+    <div class="form-group">
+      <label for="inputAddress2">Domaine</label>
+      <input type="text" class="form-control" id="inputAddress2" placeholder="" th:field="*{domaine}">
+    </div>
+    
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="inputCity">Catégorie</label>
+        <input type="text" class="form-control" id="inputCity" th:field="*{categorie}">
+      </div>
+      
+      <div class="form-group col-md-4">
+  <label for="inputState">Départements</label>
+  <select id="inputState" class="form-control" >
+    <option value="">Départements</option>
+    <option value="Génie Biomédical">Génie Biomédical</option>
+    <option value="Génie Economie et Management">Génie Economie et Management</option>
+    <option value="Langues/Communication">Langues/Communication</option>
+    <option value="Génie Informatique">Génie Informatique</option>
+    <option value="Génie Electrique">Génie Electrique</option>
+    <option value="Mathematiques Appliquees">Mathematiques Appliquees</option>
+    <option value="Génie Mecanique">Génie Mecanique</option>
+  </select>
+</div>
+
+      
+     <div class="form-group col-md-4">
+  <label for="inputState">Laboratoires</label>
+  <select id="inputState" class="form-control" th:field="*{laboratoires}">
+    <option value="">Laboratoires</option>
+    <!--<option th:each="labs : ${listDepLabos.get(article.laboratoires)}" th:value="${lab.id}" th:text="${lab.laboname}"></option>-->
+  </select>
+</div>
+      
+      <div class="form-group col-md-2">
+        <label for="inputZip">Référence</label>
+        <input type="text" class="form-control" id="inputZip" th:field="*{reference}">
+      </div>
+    </div>
+    
+    <button type="submit" class="btn btn-primary">Ajouter</button>
+  </form>
+</section>
       
       
     </main> 

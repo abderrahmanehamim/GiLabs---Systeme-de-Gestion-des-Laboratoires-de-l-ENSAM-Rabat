@@ -421,52 +421,52 @@
   </aside><!-- End Sidebar-->
     <main id="main" class="main">
     <div class="row">
-      <section class="section dashboard">
-        <div class="row">
-  
-
-      <div class="col-md-12">
-      <h4 class="text-center mb-4">Tout les Articles</h4>
+     <section class="section dashboard">
+  <div class="row">
+    <div class="col-md-12">
+      <h4 class="text-center mb-4">Tous les Articles</h4>
       <div class="table-wrap">
-      <table class="table">
-      <thead class="thead-primary">
-      <tr>
-      <th>Images</th>
-      <th>Nom d'Article</th>
-      <th>Domaine</th>
-      <th>Reference</th>
-      <th>Catégorie</th>
-      <th>quantité</th>
-      <th>Documentation</th>
-      <th>description</th>
-      <th>Modifier l'Article</th>
-      <th>Supprimer l'article</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr th:each"article:${articles}">
-        <td>
-          
-        </td>
-      <td th:text="${article.articlenom}"></td>
-      <td th:text="${article.domaine}"></td>
-      <td th:text="${article.reference}"></td>
-      <td th:text="${article.categorie}"></td>
-      <td th:text="${article.quantite}"></td>
-      <td th:text="${article.documentation}"></td>
-      <td th:text="${article.description}"></td> 
-      <td><a href="#" class="btn btn-primary">Modifier</a></td>
-      <td><a href="#" class="btn btn-primary">Supprimer</a></td>
-      </trth:each"article">
-      
-      </tbody>
-      </table>
+        <table class="table">
+          <thead class="thead-primary">
+            <tr>
+              <th>Images</th>
+              <th>Nom d'Article</th>
+              <th>Domaine</th>
+              <th>Reference</th>
+              <th>Catégorie</th>
+              <th>Quantité</th>
+              <th>Documentation</th>
+              <th>Description</th>
+              <th>Modifier l'Article</th>
+              <th>Supprimer l'article</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr th:each="article : ${articles}">
+              <td>
+                <img th:src="@{'/articleimg/' + ${article.visuel}}" alt="Article Image">
+              </td>
+              <td th:text="${article.articlenom}"></td>
+              <td th:text="${article.domaine}"></td>
+              <td th:text="${article.reference}"></td>
+              <td th:text="${article.categorie}"></td>
+              <td th:text="${article.quantite}"></td>
+              <td th:text="${article.documentation}"></td>
+              <td th:text="${article.description}"></td>
+              <td>
+                <a th:href="@{'/articles/edit/' + ${article.idarticles}}" class="btn btn-primary" id="editButton" data-toggle="modal" data-target=".bd-example-modal-lg">Modifier</a>
+              </td>
+              <td>
+                <a th:href="@{'/articles/' + ${article.idarticles}}" class="btn btn-primary" id="deleteButton">Supprimer</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
       </div>
-      </div>
-        </div>
-      </section>
-      
-      
+    </div>
+  </div>
+</section>
+
     </main> 
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
@@ -486,6 +486,8 @@
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
+  <script src="assets/js/articles.js"></script>
+  
 
 </body>
 

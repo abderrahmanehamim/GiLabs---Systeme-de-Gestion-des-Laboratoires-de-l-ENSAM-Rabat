@@ -1,6 +1,10 @@
 package com.Glab.LaboIntelligent.controllers;
 
 import java.io.IOException;
+import java.util.List;
+import java.util.HashMap;
+
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,10 +15,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
+import com.Glab.LaboIntelligent.models.Departement;
+import com.Glab.LaboIntelligent.models.Laboratoire;
 
 import com.Glab.LaboIntelligent.models.Articles;
-import com.Glab.LaboIntelligent.repositories.ArticlesRepository;
-import com.Glab.LaboIntelligent.services.ArticlesService;
+import com.Glab.LaboIntelligent.repositories.DepartmentRepository;
+import com.Glab.LaboIntelligent.repositories.LaboratoiresRepository;
 import com.Glab.LaboIntelligent.services.impl.ArticlesServiceImpl;
 
 import java.io.File;
@@ -25,9 +31,13 @@ import java.io.File;
 public class Articlescontroller {
 	@Autowired
 	private ArticlesServiceImpl articleService;
-@Autowired
-	private ArticlesRepository articlesRepository;
-	public Articlescontroller() {
+	 @Autowired
+	  private DepartmentRepository departmentRepository;
+
+	  @Autowired
+	  private LaboratoiresRepository laboratoiresRepository;
+
+public Articlescontroller() {
 		super();
 	}
 	
@@ -41,7 +51,9 @@ public class Articlescontroller {
 	
 	@GetMapping("/addarticles")
 	public String createArticleForm(Model model) {
-/*	Articles article = new Articles();
+		Articles article = new Articles();
+		model.addAttribute("article", article);
+/*	
 	article.setArticlenom("article");
 	article.setCategorie("cat");
 	article.setDescription("descp");
@@ -52,11 +64,32 @@ public class Articlescontroller {
 	article.setQuantite(22);
 	article.setReference(null);
 	article.setVisuel(null);
-	model.addAttribute("article", article);
+	
 	*/
 	//	model.addAttribute("articles", articleService.getAllArticles());
      return "Addarticle";
 	}
+	/*
+	 @GetMapping("/addarticles")
+	  public String showAddArticleForm(Model model) {
+	    Articles article = new Articles();
+	    model.addAttribute("article", article);
+
+	    // Retrieve the list of departments from the database
+	    List<Departement> departments = departmentRepository.findAll();
+	    model.addAttribute("departments", departments);
+
+	    // Retrieve the list of laboratories for each department
+	    Map<String, List<Laboratoire>> labsByDepartment = new HashMap<>();
+	    for (Departement department : departments) {
+	      List<Laboratoire> laboratories = laboratoiresRepository.findByDepartments(department);
+	      labsByDepartment.put(department.getDepartmentName(), laboratories);
+	    }
+	    model.addAttribute("labsByDepartment", labsByDepartment);
+
+	    return "add_article_form";
+	  }
+	  */
 	  @PostMapping("/addarticles")
 	    public String saveArticle(@ModelAttribute("article") Articles article,
 	                              @RequestParam("file") MultipartFile file) throws IOException {
