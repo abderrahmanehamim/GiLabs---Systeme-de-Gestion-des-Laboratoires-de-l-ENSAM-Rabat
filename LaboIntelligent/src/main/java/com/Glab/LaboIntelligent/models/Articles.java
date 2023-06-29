@@ -31,6 +31,12 @@ public class Articles {
 	    private Laboratoire laboratoire;
 
  
+@Override
+	public String toString() {
+		return "Articles [articlenom=" + articlenom + ", domaine=" + domaine + ", reference=" + reference
+				+ ", categorie=" + categorie + ", quantite=" + quantite + ", visuel=" + visuel + ", Documentation="
+				+ Documentation + ", description=" + description + ", laboratoire=" + laboratoire + "]";
+	}
 public Articles() {
 }
 public Articles(Long idarticles, String articlenom, String domaine, String reference, String categorie,

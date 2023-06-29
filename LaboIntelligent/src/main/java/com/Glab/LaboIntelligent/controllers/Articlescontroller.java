@@ -14,6 +14,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.Glab.LaboIntelligent.models.Articles;
 import com.Glab.LaboIntelligent.repositories.ArticlesRepository;
+import com.Glab.LaboIntelligent.repositories.LaboratoiresRepository;
 import com.Glab.LaboIntelligent.services.ArticlesService;
 import com.Glab.LaboIntelligent.services.impl.ArticlesServiceImpl;
 
@@ -27,6 +28,8 @@ public class Articlescontroller {
 	private ArticlesServiceImpl articleService;
 @Autowired
 	private ArticlesRepository articlesRepository;
+@Autowired
+private LaboratoiresRepository laboratoiresRepository;
 	public Articlescontroller() {
 		super();
 	}
@@ -41,26 +44,27 @@ public class Articlescontroller {
 	
 	@GetMapping("/addarticles")
 	public String createArticleForm(Model model) {
-/*	Articles article = new Articles();
-	article.setArticlenom("article");
-	article.setCategorie("cat");
-	article.setDescription("descp");
-	article.setDocumentation("documentation");
-	article.setDomaine("Domain");
-	article.setIdarticles(123456L);
-	article.setLaboratoires(null);
-	article.setQuantite(22);
-	article.setReference(null);
-	article.setVisuel(null);
-	model.addAttribute("article", article);
-	*/
-	//	model.addAttribute("articles", articleService.getAllArticles());
+
+		model.addAttribute("labs", laboratoiresRepository.findAll());
      return "Addarticle";
 	}
-	  @PostMapping("/addarticles")
-	    public String saveArticle(@ModelAttribute("article") Articles article,
-	                              @RequestParam("file") MultipartFile file) throws IOException {
-	        // Save the file
+	/*
+	 * String nom
+file img
+String domaine
+String desc
+String catg
+String lab
+String doc
+String ref
+Long qte
+	 */
+	  @PostMapping("/addarticle")
+	    public String saveArticle(Model model, @RequestParam("nom") String nom,@RequestParam("domaine") String domaine,@RequestParam("desc") String desc,
+	    		@RequestParam("catg") String catg,@RequestParam("lab") String lab,@RequestParam("doc") String doc,@RequestParam("ref") String ref,
+	                              @RequestParam("img") MultipartFile file) throws IOException {
+	     Articles article = new Articles();
+		  // Save the file
 	        if (!file.isEmpty()) {
 	            String fileName = file.getOriginalFilename();
 	            String filePath = "gilab\\LaboIntelligent\\src\\main\\resources\\static\\articleimg" + fileName; // Update the path to your images folder
@@ -68,9 +72,14 @@ public class Articlescontroller {
 	            file.transferTo(dest);
 	            article.setVisuel(fileName); // Set the file name in the model object
 	        }
-
+article.setArticlenom(nom);
+article.setCategorie(catg);
+article.setDescription(desc);
+article.setDocumentation(doc);
+article.setDomaine(domaine);
+article.setLaboratoires(laboratoiresRepository.getLabByCode(lab));
 	        // Save the article
-	        articleService.saveArticle(article);
+	        articlesRepository.save(article);
 	        return "redirect:/articles";
 	    }
 		
