@@ -92,6 +92,14 @@ public String golaboratoires() {
 }
 
 
+@GetMapping("/adduser")
+
+public String goadduser() {
+	 
+	 
+	return "adduser.html";
+	 
+}
  
 
 }

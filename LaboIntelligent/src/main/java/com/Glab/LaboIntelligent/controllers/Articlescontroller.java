@@ -1,6 +1,10 @@
 package com.Glab.LaboIntelligent.controllers;
 
 import java.io.IOException;
+import java.util.List;
+import java.util.HashMap;
+
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,11 +15,15 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
+import com.Glab.LaboIntelligent.models.Departement;
+import com.Glab.LaboIntelligent.models.Laboratoire;
 
 import com.Glab.LaboIntelligent.models.Articles;
 import com.Glab.LaboIntelligent.repositories.ArticlesRepository;
 import com.Glab.LaboIntelligent.repositories.LaboratoiresRepository;
 import com.Glab.LaboIntelligent.services.ArticlesService;
+import com.Glab.LaboIntelligent.repositories.DepartmentRepository;
+import com.Glab.LaboIntelligent.repositories.LaboratoiresRepository;
 import com.Glab.LaboIntelligent.services.impl.ArticlesServiceImpl;
 
 import java.io.File;
@@ -31,6 +39,7 @@ public class Articlescontroller {
 @Autowired
 private LaboratoiresRepository laboratoiresRepository;
 	public Articlescontroller() {
+
 		super();
 	}
 	
@@ -65,6 +74,7 @@ Long qte
 	                              @RequestParam("img") MultipartFile file) throws IOException {
 	     Articles article = new Articles();
 		  // Save the file
+
 	        if (!file.isEmpty()) {
 	            String fileName = file.getOriginalFilename();
 	            String filePath = "gilab\\LaboIntelligent\\src\\main\\resources\\static\\articleimg" + fileName; // Update the path to your images folder

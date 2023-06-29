@@ -33,4 +33,5 @@ public class LaboratoiresServiceImpl implements LaboratoireService{
 		return laboratoiresRepository.saveAll(laboratories);
 	}
 
+	
 }

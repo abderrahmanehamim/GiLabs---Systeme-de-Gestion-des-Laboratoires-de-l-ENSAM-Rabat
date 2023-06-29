@@ -14,7 +14,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import com.Glab.LaboIntelligent.models.AppRole;
 import com.Glab.LaboIntelligent.models.AppUser;
 import com.Glab.LaboIntelligent.models.Departement;
-import com.Glab.LaboIntelligent.models.Etudiant;
 import com.Glab.LaboIntelligent.models.Laboratoire;
 import com.Glab.LaboIntelligent.repositories.AppRoleRepository;
 import com.Glab.LaboIntelligent.repositories.AppUserRepository;
@@ -59,51 +58,51 @@ public class LaboIntelligentApplication implements CommandLineRunner {
 		AppUser u6 =new AppUser("admin2@esp.mr", userPasswordEncrypted, listroleAdmi);
 		appUserRepository.save(u6);
 		
-		// initialise Departements //
+	
 
 		  List<Departement> departmentsList = new ArrayList<>();
 
-	        // Create Department objects and set the department names
+	       
 	        Departement department1 = new Departement();
 	        department1.setIddepart(1);
 	        department1.setDepartmentName("Génie Mecanique");
-	        //department1.setLaboratoire(departemenMecLab1);
+	       
 	        
 	        departmentsList.add(department1);
 
 	        Departement department2 = new Departement();
 	        department2.setIddepart(2);
 	        department2.setDepartmentName("Mathematiques Appliquees");
-	        //department2.setLaboratoire(departmentMathLab1);
+	       
 	        departmentsList.add(department2);
 	        
 	        Departement department3 = new Departement();
 	        department3.setIddepart(3);
 	        department3.setDepartmentName("Génie Informatique");
-	        //department3.setLaboratoire(departmentInfoLab1);
+	       
 	        departmentsList.add(department3);
 
 	        Departement department4 = new Departement();
 	        department4.setIddepart(4);
 	        department4.setDepartmentName("Génie Electrique");
-	        //department4.setLaboratoire(departmentElecLab1);
+	     
 	        departmentsList.add(department4);
 	        
 	        Departement department5 = new Departement();
 	        department5.setIddepart(5);
 	        department5.setDepartmentName("Langues/Communication");
-	        //department5.setLaboratoire(departmentLanguelab1);
+	       
 	        departmentsList.add(department5);
 
 	        Departement department6 = new Departement();
 	        department6.setIddepart(6);
 	        department6.setDepartmentName("Génie Economie et Management");
-	        //department6.setLaboratoire(departmenEcoLab1);
+	        
 	        departmentsList.add(department6);
 	        
 	        Departement department7 = new Departement();
 	        department7.setIddepart(7);
-	        //department7.setLaboratoire(departmentBiomlab1);
+	        
 	        department7.setDepartmentName("Génie Biomédical");
 	        departmentsList.add(department7);
 
@@ -198,19 +197,7 @@ public class LaboIntelligentApplication implements CommandLineRunner {
 			 listDepLabos.add(departmentBiomlab1);
 
 
-			 /* Save the lists of laboratories to the database using the LaboratoryRepository
 		
-			 laboratoireservice.saveAll(departemenMecLab1);
-			 laboratoireservice.saveAll(departmentMathLab1);
-			 laboratoireservice.saveAll(departmentInfoLab1);
-			 laboratoireservice.saveAll(departmentElecLab1);
-			 laboratoireservice.saveAll(departmentLanguelab1);
-			 laboratoireservice.saveAll(departmentBiomlab1);
-			 
-			 laboratoireservice.saveAll(departmenEcoLab1);
-
-			 */ // Repeat this process for other departments and their respective laboratories
-
 			 for(Collection<Laboratoire> labs : listDepLabos) {
 				 for(Laboratoire lab:labs) {
 					 laboratoiresRepository.save(lab);
