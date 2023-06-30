@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import com.Glab.LaboIntelligent.models.Departement;
 import com.Glab.LaboIntelligent.models.Laboratoire;
 import com.Glab.LaboIntelligent.repositories.LaboratoiresRepository;
+import com.Glab.LaboIntelligent.services.ArticlesService;
 import com.Glab.LaboIntelligent.services.DepartmentService;
 import com.Glab.LaboIntelligent.services.LaboratoireService;
 
@@ -22,7 +23,7 @@ import com.Glab.LaboIntelligent.services.LaboratoireService;
 @Controller
 public class laboratoirecontroller {
 	
-	
+	private ArticlesService articleservice;
 	private LaboratoireService laboratoireservice ;
 	
 	
@@ -62,5 +63,7 @@ public class laboratoirecontroller {
 		
 		 return ResponseEntity.ok("Laboratoires initialized successfully.");
 	 }
+	 
+
 
 }

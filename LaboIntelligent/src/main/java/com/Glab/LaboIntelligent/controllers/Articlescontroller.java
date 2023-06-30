@@ -21,6 +21,8 @@ import com.Glab.LaboIntelligent.models.Laboratoire;
 import com.Glab.LaboIntelligent.models.Articles;
 import com.Glab.LaboIntelligent.repositories.DepartmentRepository;
 import com.Glab.LaboIntelligent.repositories.LaboratoiresRepository;
+import com.Glab.LaboIntelligent.services.impl.LaboratoiresServiceImpl;
+import com.Glab.LaboIntelligent.services.LaboratoireService;
 import com.Glab.LaboIntelligent.services.impl.ArticlesServiceImpl;
 
 import java.io.File;
@@ -31,12 +33,8 @@ import java.io.File;
 public class Articlescontroller {
 	@Autowired
 	private ArticlesServiceImpl articleService;
-	 @Autowired
-	  private DepartmentRepository departmentRepository;
-
-	  @Autowired
-	  private LaboratoiresRepository laboratoiresRepository;
-
+	
+	
 public Articlescontroller() {
 		super();
 	}
@@ -45,58 +43,33 @@ public Articlescontroller() {
 	@GetMapping("/articles")
 	public String listArticle(Model model) {	
 		model.addAttribute("articles", articleService.getAllArticles());
+	
 		return "AllArticles";
 	}
 	
+
+	
 	
 	@GetMapping("/addarticles")
-	public String createArticleForm(Model model) {
+	public String addNew(Model model) {
 		Articles article = new Articles();
 		model.addAttribute("article", article);
-/*	
-	article.setArticlenom("article");
-	article.setCategorie("cat");
-	article.setDescription("descp");
-	article.setDocumentation("documentation");
-	article.setDomaine("Domain");
-	article.setIdarticles(123456L);
-	article.setLaboratoires(null);
-	article.setQuantite(22);
-	article.setReference(null);
-	article.setVisuel(null);
-	
-	*/
-	//	model.addAttribute("articles", articleService.getAllArticles());
+
      return "Addarticle";
 	}
-	/*
-	 @GetMapping("/addarticles")
-	  public String showAddArticleForm(Model model) {
-	    Articles article = new Articles();
-	    model.addAttribute("article", article);
-
-	    // Retrieve the list of departments from the database
-	    List<Departement> departments = departmentRepository.findAll();
-	    model.addAttribute("departments", departments);
-
-	    // Retrieve the list of laboratories for each department
-	    Map<String, List<Laboratoire>> labsByDepartment = new HashMap<>();
-	    for (Departement department : departments) {
-	      List<Laboratoire> laboratories = laboratoiresRepository.findByDepartments(department);
-	      labsByDepartment.put(department.getDepartmentName(), laboratories);
-	    }
-	    model.addAttribute("labsByDepartment", labsByDepartment);
-
-	    return "add_article_form";
-	  }
-	  */
-	  @PostMapping("/addarticles")
-	    public String saveArticle(@ModelAttribute("article") Articles article,
+	@PostMapping("/addarticles")
+	public String articleForm(Articles article) {
+		articleService.saveArticle(article);
+     return "Addarticle";
+	}
+	  @PostMapping("/addarticles/uploadimg")
+	    public String uploadimg(@ModelAttribute("article") Articles article,
 	                              @RequestParam("file") MultipartFile file) throws IOException {
+		
 	        // Save the file
 	        if (!file.isEmpty()) {
 	            String fileName = file.getOriginalFilename();
-	            String filePath = "gilab\\LaboIntelligent\\src\\main\\resources\\static\\articleimg" + fileName; // Update the path to your images folder
+	            String filePath = "gilab/LaboIntelligent/src/main/resources/static/articleimg/" + fileName; // Update the path to your images folder
 	            File dest = new File(filePath);
 	            file.transferTo(dest);
 	            article.setVisuel(fileName); // Set the file name in the model object
@@ -104,7 +77,7 @@ public Articlescontroller() {
 
 	        // Save the article
 	        articleService.saveArticle(article);
-	        return "redirect:/articles";
+	        return "redirect:/Addarticles";
 	    }
 		
 
@@ -117,19 +90,19 @@ public Articlescontroller() {
 		model.addAttribute("article", articleService.getArticleById(id));
 		return "edit_article";
 	}
-    @PostMapping("/articles/{id}")
+    @PostMapping("/articles/edit/{id}")
     public String updateArticle(@PathVariable Long id,
     		@ModelAttribute("article") Articles article,
     		 Model model) {
     	//get article from database by id 
     	Articles existingArticle = articleService.getArticleById(id);
-    	existingArticle.setIdarticles(id);
+    	existingArticle.setId(id);
     	existingArticle.setArticlenom(article.getArticlenom());
     	existingArticle.setCategorie(article.getCategorie());
     	existingArticle.setDescription(article.getDescription());
     	existingArticle.setDocumentation(article.getDocumentation());
     	existingArticle.setDomaine(article.getDomaine());
-    	existingArticle.setLaboratoires(article.getLaboratoires());
+    	existingArticle.setLaboratoire(article.getLaboratoire());
     	existingArticle.setQuantite(article.getQuantite());
     	existingArticle.setReference(article.getReference());
     	existingArticle.setVisuel(article.getVisuel());
@@ -139,7 +112,7 @@ public Articlescontroller() {
     	return "redirect:/articles";
     	
     }
-    @GetMapping("/articles/{id}")
+    @GetMapping("articles/delete/{id}")
     public String deleteArticle(@PathVariable Long id) {
     	articleService.deleteArticleById(id);
     	return "redirect:/articles";

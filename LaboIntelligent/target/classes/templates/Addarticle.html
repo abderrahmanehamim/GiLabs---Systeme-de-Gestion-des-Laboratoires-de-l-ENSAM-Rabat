@@ -395,7 +395,7 @@
         </a>
       </li><!-- End Register Page Nav -->
       <li class="nav-item">
-        <a class="nav-link collapsed" th:href="@{/articles/new}">
+        <a class="nav-link collapsed" th:href="@{addarticles}">
           <i class="bi bi-card-list"></i>
           <span>Ajouter Article</span>
         </a>
@@ -422,22 +422,27 @@
     <main id="main" class="main">
     <div class="row">
 <section class="section dashboard">
-  <form th:action="@{/addarticles}" th:object="${article}" method="POST" enctype="multipart/form-data">
+  <form th:action="@{/addarticles}" th:object="${article}" method="POST" >
     <div class="form-group">
       <label for="inputAddress">Nom d'Article</label>
       <input type="text" class="form-control" id="inputAddress" placeholder="Article Nom" th:field="*{articlenom}">
     </div>
 
     <div class="custom-file">
-      <input type="file" class="custom-file-input" id="customFile" th:field="*{visuel}">
-      <label class="custom-file-label" for="customFile">Image d'article</label>
-    </div>
+    <input type="file" class="custom-file-input" id="customFile" th:href="@{/addarticles/uploadimg}" th:field="*{visuel}" name="file" th:method="POST">
+    <label class="custom-file-label" for="customFile">Image d'article</label>
+</div>
 
     <div class="form-group">
       <label for="exampleFormControlTextarea1">Documentation</label>
       <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" th:field="*{documentation}"></textarea>
     </div>
-    
+  <div class="form-group">
+  <label for="inputAddress">Quantité</label>
+  <select class="form-control" id="inputAddress" th:field="*{quantite}">
+    <option th:each="num : ${#numbers.sequence(1, 10)}" th:value="${num}" th:text="${num}"></option>
+  </select>
+</div>
     <div class="form-group">
       <label for="inputAddress2">Domaine</label>
       <input type="text" class="form-control" id="inputAddress2" placeholder="" th:field="*{domaine}">
@@ -448,35 +453,32 @@
         <label for="inputCity">Catégorie</label>
         <input type="text" class="form-control" id="inputCity" th:field="*{categorie}">
       </div>
-      
-      <div class="form-group col-md-4">
-  <label for="inputState">Départements</label>
-  <select id="inputState" class="form-control" >
-    <option value="">Départements</option>
-    <option value="Génie Biomédical">Génie Biomédical</option>
-    <option value="Génie Economie et Management">Génie Economie et Management</option>
-    <option value="Langues/Communication">Langues/Communication</option>
-    <option value="Génie Informatique">Génie Informatique</option>
-    <option value="Génie Electrique">Génie Electrique</option>
-    <option value="Mathematiques Appliquees">Mathematiques Appliquees</option>
-    <option value="Génie Mecanique">Génie Mecanique</option>
-  </select>
-</div>
-
-      
-     <div class="form-group col-md-4">
+     <!--
+<div class="form-group col-md-4">
   <label for="inputState">Laboratoires</label>
-  <select id="inputState" class="form-control" th:field="*{laboratoires}">
-    <option value="">Laboratoires</option>
-    <!--<option th:each="labs : ${listDepLabos.get(article.laboratoires)}" th:value="${lab.id}" th:text="${lab.laboname}"></option>-->
+  <select class="form-control" th:field="*{laboratoires.code}">
+    <option >Select Laboratoires</option>
+    <option th:each="laboratoire : ${laboratoires}"
+    th:value="${laboratoire.code}"
+    th:text="${laboratoire.laboname}">	
+	</option>
+    
   </select>
 </div>
-      
+      -->
       <div class="form-group col-md-2">
         <label for="inputZip">Référence</label>
         <input type="text" class="form-control" id="inputZip" th:field="*{reference}">
       </div>
     </div>
+     <div class="form-group col-md-2">
+        <label for="inputZip">Description</label>
+        <input type="text" class="form-control" id="inputZip" th:field="*{description}">
+      </div>
+    </div>
+    
+    
+    
     
     <button type="submit" class="btn btn-primary">Ajouter</button>
   </form>

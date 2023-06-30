@@ -13,5 +13,7 @@ public interface LaboratoireService {
 	
     List<Laboratoire> saveAll(List<Laboratoire> laboratories);
 
+	void deleteArticleById(Long idarticles);
+
 	
 }

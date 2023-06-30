@@ -121,13 +121,13 @@ public class LaboIntelligentApplication implements CommandLineRunner {
 			 Meclab1.setLaboname("Lab Mecanique");
 			 Meclab1.setCode("mecLab1");
 			 Meclab1.setActivite("Activity 1");
-			 Meclab1.setDepartments(department1);
+			 Meclab1.setDep(department1);
 			 // Set the department for the laboratory
 			 Laboratoire Meclab2 = new Laboratoire();
 			 Meclab2.setLaboname("Lab Mecanique");
 			 Meclab2.setCode("mecLab2");
 			 Meclab2.setActivite("Activity 1");
-			 Meclab2.setDepartments(department1);
+			 Meclab2.setDep(department1);
 			 departemenMecLab1.add(Meclab1);
 			 departemenMecLab1.add(Meclab2);
 
@@ -138,7 +138,7 @@ public class LaboIntelligentApplication implements CommandLineRunner {
 			 Mathlab1.setLaboname("Lab Math ");
 			 Mathlab1.setCode("mathlab1");
 			 Mathlab1.setActivite("Activity 3");
-			 Mathlab1.setDepartments(department2); // Set the department for the laboratory
+			 Mathlab1.setDep(department2); // Set the department for the laboratory
 			 departmentMathLab1.add(Mathlab1);
 			 listDepLabos.add(departmentMathLab1);
 
@@ -148,7 +148,7 @@ public class LaboIntelligentApplication implements CommandLineRunner {
 			 Infolab1.setLaboname("Lab Informatique");
 			 Infolab1.setCode("infolab1");
 			 Infolab1.setActivite("Activity 3");
-			 Infolab1.setDepartments(department3); // Set the department for the laboratory
+			 Infolab1.setDep(department3); // Set the department for the laboratory
 			 departmentInfoLab1.add(Infolab1);
 			 
 			 
@@ -159,7 +159,7 @@ public class LaboIntelligentApplication implements CommandLineRunner {
 			 Eleclab1.setLaboname("Lab Electrique");
 			 Eleclab1.setCode("eleclab1");
 			 Eleclab1.setActivite("Activity 3");
-			 Eleclab1.setDepartments(department4); // Set the department for the laboratory
+			 Eleclab1.setDep(department4); // Set the department for the laboratory
 			 departmentElecLab1.add(Eleclab1);
 			 
 			 listDepLabos.add(departmentElecLab1);
@@ -169,7 +169,7 @@ public class LaboIntelligentApplication implements CommandLineRunner {
 			 Languelab1.setLaboname("Lab Langue");
 			 Languelab1.setCode("languelab1");
 			 Languelab1.setActivite("Activity 3");
-			 Languelab1.setDepartments(department5); // Set the department for the laboratory
+			 Languelab1.setDep(department5); // Set the department for the laboratory
 			 departmentLanguelab1.add(Languelab1);
 			
 			 listDepLabos.add(departmentLanguelab1);
@@ -180,7 +180,7 @@ public class LaboIntelligentApplication implements CommandLineRunner {
 			 Ecolab1.setLaboname("Lab Economie");
 			 Ecolab1.setCode("ecolab1");
 			 Ecolab1.setActivite("Activity 3");
-			 Ecolab1.setDepartments(department6); // Set the department for the laboratory
+			 Ecolab1.setDep(department6); // Set the department for the laboratory
 			 departmenEcoLab1.add(Ecolab1);
 			 
 			 listDepLabos.add(departmenEcoLab1);
@@ -191,7 +191,7 @@ public class LaboIntelligentApplication implements CommandLineRunner {
 			 Biomlab1.setLaboname("Lab Biomédicale");
 			 Biomlab1.setCode("biomlab1");
 			 Biomlab1.setActivite("Activity 3");
-			 Biomlab1.setDepartments(department7); // Set the department for the laboratory
+			 Biomlab1.setDep(department7); // Set the department for the laboratory
 			 departmentBiomlab1.add(Biomlab1);
 			 
 			 listDepLabos.add(departmentBiomlab1);

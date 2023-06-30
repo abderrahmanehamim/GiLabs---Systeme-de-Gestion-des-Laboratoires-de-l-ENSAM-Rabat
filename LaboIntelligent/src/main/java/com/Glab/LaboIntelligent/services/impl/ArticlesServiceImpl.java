@@ -5,8 +5,11 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.Glab.LaboIntelligent.models.Articles;
+import com.Glab.LaboIntelligent.models.Laboratoire;
 import com.Glab.LaboIntelligent.repositories.ArticlesRepository;
 import com.Glab.LaboIntelligent.services.ArticlesService;
+
+import javassist.NotFoundException;
 @Service
 public class ArticlesServiceImpl implements ArticlesService {
 	
@@ -38,9 +41,18 @@ public class ArticlesServiceImpl implements ArticlesService {
 
 	@Override
 	public void deleteArticleById(Long idarticles) {
-		
-		articlesRepository.deleteById(idarticles);
+	    Articles article = articlesRepository.findById(idarticles)
+	            .orElseThrow();
+	    // Remove the article from the associated laboratoire
+	    Laboratoire laboratoire = article.getLaboratoire();
+	    if (laboratoire != null) {
+	        laboratoire.getArticles().remove(article);
+	    }
+
+	    // Delete the article
+	    articlesRepository.delete(article);
+	}
 		
 	}
 
-}
+

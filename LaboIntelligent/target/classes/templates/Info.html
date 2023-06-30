@@ -434,8 +434,12 @@
 
         <div class="row">
           <div class="col-lg-4" data-aos="fade-right">
-            <img src="/static/assets/img/imgdep/india.jpg" class="img-fluid" alt="">
+       <iframe width="460" height="	315" src="https://www.youtube.com/embed/j53UaPKBSNk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
           </div>
+          
+          
+          
+          
           <div class="col-lg-8 pt-4 pt-lg-0 content" data-aos="fade-left">
             <!--h3>Activité</h3>
             <p class="fst-italic">
@@ -466,7 +470,6 @@
     <section id="services" class="services">
       <div class="container">
         <br><br>
-       
         
         <div class="section-title" style="text-align: center;">
           <h2>Laboratoires Affectés à cet filière</h2>
@@ -496,44 +499,53 @@
           </div>
         <br>
         <br>
-          <div class="col-md-12">
-          <h4 class="text-center mb-4">Tout les Articles de ce Départements</h4>
-          <div class="table-wrap">
-          <table class="table">
-          <thead class="thead-primary">
+         <div class="row">
+  <div class="col-md-12">
+    <h4 class="text-center mb-4">Tous les Articles de ce département</h4>
+    <div class="table-wrap">
+      <table class="table">
+        <thead class="thead-primary">
           <tr>
-          <th>Images</th>
-          <th>Nom d'Article</th>
-          <th>Domaine</th>
-          <th>Reference</th>
-          <th>Catégorie</th>
-          <th>quantité</th>
-          <th>Documentation</th>
-          <th>description</th>
-          <th>Modifier l'Article</th>
-          <th>Supprimer l'article</th>
+            <th>Images</th>
+            <th>Nom d'Article</th>
+            <th>Domaine</th>
+            <th>Reference</th>
+            <th>Catégorie</th>
+            <th>Quantité</th>
+            <th>Documentation</th>
+            <th>Description</th>
+            <th>laboratoires</th>
+            <th>Modifier l'Article</th>
+            <th>Supprimer l'article</th>
           </tr>
-          </thead>
-          <tbody>
-          <tr>
+        </thead>
+        <tbody>
+          <tr th:each="article : ${articles}" th:if="${laboratoire.code == 'infolab1'}">
             <td>
-            
+              <img th:src="@{'/articleimg/' + ${article.visuel}}" alt="Article Image">
             </td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td> 
-          <td><a href="#" class="btn btn-primary">Modifier</a></td>
-          <td><a href="#" class="btn btn-primary">Supprimer</a></td>
+            <td th:text="${article.articlenom}"></td>
+            <td th:text="${article.domaine}"></td>
+            <td th:text="${article.reference}"></td>
+            <td th:text="${article.categorie}"></td>
+            <td th:text="${article.quantite}"></td>
+            <td th:text="${article.documentation}"></td>
+            <td th:text="${article.description}"></td>
+            <td th:text="${article.laboratoires.code}"></td>
+            <td>
+              <a th:href="@{'/articles/edit/' + ${article.idarticles}}" class="btn btn-primary" id="editButton" data-toggle="modal" data-target=".bd-example-modal-lg">Modifier</a>
+            </td>
+            <td>
+              <a th:href="@{'/articles/' + ${article.idarticles}}" class="btn btn-primary" id="deleteButton">Supprimer</a>
+            </td>
           </tr>
-          
-          </tbody>
-          </table>
-          </div>
-          </div>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+</section>
+
 
   <br><br>
 </div>
