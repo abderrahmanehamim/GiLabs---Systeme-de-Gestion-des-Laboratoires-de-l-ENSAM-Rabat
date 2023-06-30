@@ -17,6 +17,7 @@ import com.Glab.LaboIntelligent.repositories.EtudiantRepository;
 import com.Glab.LaboIntelligent.services.EtudiantService;
 import com.Glab.LaboIntelligent.services.impl.ExcelService;
 import com.Glab.LaboIntelligent.helper.ExcelUploader;
+import com.Glab.LaboIntelligent.helper.ExcelUploader2Profs;
 
 
 @Controller
@@ -65,7 +66,7 @@ public class EtudiantContoller {
 	public String uploadFileProf (Model model, @RequestParam("file") MultipartFile file)throws IOException {
 		String message = "";
 
-		if (com.Glab.LaboIntelligent.helper.ExcelUploader.hasExcelFormat(file)) {
+		if (ExcelUploader2Profs.hasExcelFormat(file)) {
 			
 				fileService.saveExcelProf(file);
 

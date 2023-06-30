@@ -458,32 +458,26 @@
 
 						</form>
 					</div>
-				<div  class="panel-body">
-						<form th:action="@{/Admin/uploadFileEm}" method="post"
+	<div  class="panel-body">
+
+						<form th:action="@{/Admin/uploadFileProf}" method="post"
 							enctype="multipart/form-data">
 
 							<div class="form-group">
 
 								<label class="control-label">importer le fichier des
-									professeurs </label> <input type="file" name="file"
-									accept=".xls,.xlsx" class="form-control" />
+									professeurs</label> <input type="file" name="file" accept=".xls,.xlsx"
+									class="form-control" />
 
-								<!-- <input
-      type="submit" value="Upload file"  /> -->
+								
 								<button type="submit" class="btn btn-success">
 									<span class="glyphicon glyphicon-upload"></span> Uploader le fichier
 								</button>
 
-								<!-- <p>Upload icon on a styled link button:
-        <a href="#" class="btn btn-info btn-lg">
-          <span class="glyphicon glyphicon-upload"></span> Upload
-        </a>
-      </p>  -->
-
-						
+							</div>
 
 						</form>
-</div>
+					</div>
 
 </div>
 
