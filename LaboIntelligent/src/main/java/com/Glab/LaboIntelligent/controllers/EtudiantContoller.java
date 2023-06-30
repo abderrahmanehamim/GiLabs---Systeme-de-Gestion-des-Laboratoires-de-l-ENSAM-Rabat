@@ -60,6 +60,25 @@ public class EtudiantContoller {
 		model.addAttribute("Message", message);
 		return "excel";
 	}
+	
+	@PostMapping("/Admin/uploadFileProf")
+	public String uploadFileProf (Model model, @RequestParam("file") MultipartFile file)throws IOException {
+		String message = "";
+
+		if (com.Glab.LaboIntelligent.helper.ExcelUploader.hasExcelFormat(file)) {
+			
+				fileService.saveExcelProf(file);
+
+				message = "Uploaded the file successfully: " + file.getOriginalFilename();
+				model.addAttribute("Message", message);
+				return "excel";
+		}
+				
+
+		message = "Please upload an excel file!";
+		model.addAttribute("Message", message);
+		return "excel";
+	}
 
 		@GetMapping("/students")
 		 public String listEtudiant(Model model) {

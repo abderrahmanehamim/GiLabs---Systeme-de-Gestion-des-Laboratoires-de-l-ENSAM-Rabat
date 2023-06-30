@@ -23,9 +23,9 @@ import com.Glab.LaboIntelligent.*;
 import com.Glab.LaboIntelligent.models.*;
 import com.Glab.LaboIntelligent.repositories.*;
 
-public class ExcelUploader {
+public class ExcelUploader2Profs {
 	public static String TYPE = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
-	static String[] HEADERs = { "Matricule", "Prénom" ,"Nom", "Semestre", "Filiére", "Email" };
+	static String[] HEADERs = {  "Prénom" ,"Nom", "Filiére", "Email" };
 	static String SHEET = "Feuille 1";
 	@Autowired
 	EtudiantRepository etudiantRepository;
@@ -38,14 +38,14 @@ public class ExcelUploader {
 		return true;
 	}
 
-	public static List<Etudiant> Etudiants(InputStream is) {
+	public static List<Professeur> Professeurs(InputStream is) {
 		try {
 			Workbook workbook = new XSSFWorkbook(is);
 
 			Sheet sheet = workbook.getSheet(SHEET);
 			Iterator<Row> rows = sheet.iterator();
 
-			List<Etudiant> students = new ArrayList<Etudiant>();
+			List<Professeur> profs = new ArrayList<Professeur>();
 			List<AppUser> users =new ArrayList<AppUser>();
 			int rowNumber = 0;
 			while (rows.hasNext()) {
@@ -59,10 +59,10 @@ public class ExcelUploader {
 
 				Iterator<Cell> cellsInRow = currentRow.iterator();
 				AppUser user =new AppUser();
-				AppRole r1= new AppRole("Etudiant");
+				AppRole r1= new AppRole("Professeur");
 				Collection<AppRole> listrole =new ArrayList<AppRole>();
 				listrole.add(r1);
-				Etudiant student = new Etudiant();
+				Professeur prof = new Professeur();
 				Departement departemet = new Departement();
 				BCryptPasswordEncoder bcryptPaswwordEncoder=new BCryptPasswordEncoder(10, new SecureRandom());
 				int cellIdx = 0;
@@ -70,34 +70,28 @@ public class ExcelUploader {
 					Cell currentCell = cellsInRow.next();
 
 					switch (cellIdx) {
+
 					case 0:
-						student.setMatricule((long) currentCell.getNumericCellValue());
+						prof.setPrenom(currentCell.getStringCellValue());
 						
 						break;
 
 					case 1:
-						student.setPrenom(currentCell.getStringCellValue());
-						
-						break;
-
-					case 2:
-						student.setNom(currentCell.getStringCellValue());
+						prof.setNom(currentCell.getStringCellValue());
 						
 						break;
 
 		
-					case 4:
+					case 2:
 						departemet.setDepartmentName(currentCell.getStringCellValue());
 						
 						break;
 
-					case 5:
-						student.setEmail(currentCell.getStringCellValue());
+					case 3:
+						prof.setEmail(currentCell.getStringCellValue());
 						user.setEmail(currentCell.getStringCellValue());
 						break;
-					case 6:
-						student.setSemestre(currentCell.getStringCellValue());
-						break;
+					
 					default:
 						break;
 					}
@@ -109,15 +103,15 @@ public class ExcelUploader {
 				}
 				
            if(departemet.getDepartmentName()!="") {
-                student.setDep(departemet);
+        	   prof.setDep(departemet);
            }
-				students.add(student);
+				profs.add(prof);
 				users.add(user);
 			}
 
 			workbook.close();
 
-			return students;
+			return profs;
 		} catch (IOException e) {
 			throw new RuntimeException("fail to parse Excel file: " + e.getMessage());
 		}
@@ -143,7 +137,7 @@ public class ExcelUploader {
 
 				Iterator<Cell> cellsInRow = currentRow.iterator();
 				AppUser user =new AppUser();
-				AppRole r1= new AppRole("Etudiant");
+				AppRole r1= new AppRole("Professeur");
 				Collection<AppRole> listrole =new ArrayList<AppRole>();
 				listrole.add(r1);
 				

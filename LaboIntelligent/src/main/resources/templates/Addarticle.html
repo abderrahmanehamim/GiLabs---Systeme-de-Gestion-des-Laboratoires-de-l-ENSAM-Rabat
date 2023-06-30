@@ -425,60 +425,53 @@
     
     		<section class="section dashboard">
        
-    		<form th:action="@{/addarticle}" method="post" enctype="multipart/form-data">
+    		<form th:action ="@{/ajouterarticle}" method="post">
 
-    
+    	<!-- Name >
+			<input type="text" name="pname" id="name" class="form-control mb-4"
+				placeholder="Product Name"-->
     					<div class="form-group">
-    									<label for="nom">Nom d'Article</label>
-   										 <input type="text" name="nom" class="form-control" id="nom" placeholder="Article Nom">
+   										 <input type="text" name="nom" class="form-control" id="anom" placeholder="Article Nom">
     					</div>
 
-    					<div class="custom-file">
-   										 <input type="file" name="img" class="custom-file-input" id="customFile">
-    									<label class="custom-file-label" for="customFile">Image d'article</label>
-    					</div>
   
+  <div class="custom-file">
+				<input type="file" name="file" class="custom-file-input"
+					id="customFile"> <label class="custom-file-label"
+					for="customFile">Article Image</label>
+			</div>
  
 					    <div class="form-group">
-    									<label for="domaine">domaine</label>
-   										 <input type="text" name="domaine" class="form-control"  id="domaine" placeholder="">
+   										 <input type="text" name="domaine" class="form-control"  id="adomaine" placeholder="domaine">
    						 </div>
    						  <div class="form-group">
-    									<label for="desc">description</label>
-   										 <input type="text" name="desc" class="form-control"  id="desc" placeholder="">
+   										 <input type="text" name="desc" class="form-control"  id="adesc" placeholder="description">
    						 </div>
- 					   <div class="form-row">
-    									<div class="form-group col-md-6">
-      												<label for="catg">catégorie</label>
-    												  <input type="text" name="catg" class="form-control" id="catg">
+    									<div class="form-group">
+      												<label for="catg"></label>
+    												  <input type="text" name="catg" class="form-control" id="acatg" placeholder="catégorie">
     									</div>
    
     
-    									<div class="form-group col-md-4">
+    									<div class="form-group ">
       												<label for="lab">Laboratoires</label>
-      												<select  name="lab" id="lab" class="form-control">
+      												<select  name="lab" id="lab" class="form-control" >
        												<div th:each=lab:${labs} >
 		          										 <option th:text=${lab.Code}></option>
 	  											 	</div>
      												 </select>
       									</div>
- 					   </div>
  					
 				
 				      <div class="form-group">
-    									<label for="doc">Documentation</label>
-    									<input type="text" name="doc" class="form-control"  id="doc" >
-    									
+    									<input type="text" name="doc" class="form-control"  id="adoc" placeholder="Documentation" >
+				      </div>	
     									<div class="form-group">
-      											<label for="ref">réference</label>
-      											<input type="text" class="form-control" id="ref">
+      											<input type="text" class="form-control" id="aref" placeholder="réference">
     					             	</div>
       									<div class="form-group">
- 												   <label for="qte">quantite</label>
- 												   <input type="number" name="qte" class="form-control"  id="qte" placeholder="">
+ 												   <input type="number" name="qte" class="form-control"  id="qte" placeholder="quantité">
   										</div>
- 					 </div>
-
     
  					 <button type="submit" class="btn btn-primary">Ajouter</button>
 	</form>
@@ -494,9 +487,9 @@
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src ="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
   <script src="assets/vendor/apexcharts/apexcharts.min.js"></script>
-  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="assets/vendor/chart.js/chart.umd.js"></script>
   <script src="assets/vendor/echarts/echarts.min.js"></script>
   <script src="assets/vendor/quill/quill.min.js"></script>

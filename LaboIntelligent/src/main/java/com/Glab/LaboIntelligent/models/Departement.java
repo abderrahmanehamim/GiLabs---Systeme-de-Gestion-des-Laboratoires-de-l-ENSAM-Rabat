@@ -25,6 +25,20 @@ public class Departement {
 	@OneToMany(mappedBy = "Dep")
 	private List<Etudiant> etudiants;
 	
+	public List<Laboratoire> getLaboratoires() {
+		return laboratoires;
+	}
+	public void setLaboratoires(List<Laboratoire> laboratoires) {
+		this.laboratoires = laboratoires;
+	}
+	public List<Professeur> getProfesseurs() {
+		return professeurs;
+	}
+	public void setProfesseurs(List<Professeur> professeurs) {
+		this.professeurs = professeurs;
+	}
+	@OneToMany(mappedBy = "Dep")
+	private List<Professeur> professeurs;
     
 	public Departement() {
 	}

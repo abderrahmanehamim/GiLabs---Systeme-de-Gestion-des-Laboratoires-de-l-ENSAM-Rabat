@@ -58,7 +58,9 @@ private LaboratoiresRepository laboratoiresRepository;
      return "Addarticle";
 	}
 	/*
-	 * String nom
+	 * String nom          String nom,@RequestParam("domaine") String domaine,@RequestParam("desc") String desc,
+	    		,,,@RequestParam("ref") String ref,
+	                              @RequestParam("img") MultipartFile file
 file img
 String domaine
 String desc
@@ -68,11 +70,9 @@ String doc
 String ref
 Long qte
 	 */
-	  @PostMapping("/addarticle")
-	    public String saveArticle(Model model, @RequestParam("nom") String nom,@RequestParam("domaine") String domaine,@RequestParam("desc") String desc,
-	    		@RequestParam("catg") String catg,@RequestParam("lab") String lab,@RequestParam("doc") String doc,@RequestParam("ref") String ref,
-	                              @RequestParam("img") MultipartFile file) throws IOException {
-	     Articles article = new Articles();
+	  @PostMapping("/ajouterarticle")
+	    public String saveArticle(Model model, @RequestParam("nom") String nom,@RequestParam("file") MultipartFile file,@RequestParam("domaine") String domaine,@RequestParam("desc") String desc,@RequestParam("catg") String catg,@RequestParam("lab") String lab,@RequestParam("doc") String doc,@RequestParam("qte") int qte) throws IOException {
+	  /*   Articles article = new Articles();
 		  // Save the file
 
 	        if (!file.isEmpty()) {
@@ -90,7 +90,7 @@ article.setDomaine(domaine);
 article.setLaboratoires(laboratoiresRepository.getLabByCode(lab));
 	        // Save the article
 	        articlesRepository.save(article);
-	        return "redirect:/articles";
+	     */   return "redirect:/articles";
 	    }
 		
 

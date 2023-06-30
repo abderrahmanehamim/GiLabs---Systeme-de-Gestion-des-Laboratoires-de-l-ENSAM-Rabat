@@ -31,6 +31,8 @@ public class EmployeeAuthenticationSuccessHandler implements AuthenticationSucce
 			Authentication authentication) throws IOException, ServletException {
 		boolean hasEtudiantRole = false;
 		boolean hasAdminRole = false;
+		boolean hasProfRole = false;
+
 		Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
 		for (GrantedAuthority grantedAuthority : authorities) {
 			if (grantedAuthority.getAuthority().equals("Etudiant")) {
@@ -39,6 +41,10 @@ public class EmployeeAuthenticationSuccessHandler implements AuthenticationSucce
 				break;
 			} else if (grantedAuthority.getAuthority().equals("Admin")) {
 				hasAdminRole = true;
+				break;
+			}
+			else if (grantedAuthority.getAuthority().equals("Professeur")) {
+				hasProfRole = true;
 				break;
 			}
 		}
@@ -53,7 +59,7 @@ public class EmployeeAuthenticationSuccessHandler implements AuthenticationSucce
 		} 
 		 else if (hasAdminRole && user.isStatus()==false) {
 			 
-				System.out.println("ADMIN Authentication " + "First Authentication =" +user.isStatus());
+				System.out.println("ADMIN Authentication ");
 
 				redirectStrategy.sendRedirect(arg0, arg1, "/Admin");
 			} 
@@ -61,6 +67,10 @@ public class EmployeeAuthenticationSuccessHandler implements AuthenticationSucce
 			System.out.println("ADMIN Authentication");
 
 			redirectStrategy.sendRedirect(arg0, arg1, "/Admin");
+		} else if (hasProfRole ) {
+			System.out.println("Prof Authentication");
+
+			redirectStrategy.sendRedirect(arg0, arg1, "/Prof");
 		} 
 	 
 		else {
