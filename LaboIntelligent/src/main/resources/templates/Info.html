@@ -520,7 +520,8 @@
           </tr>
         </thead>
         <tbody>
-          <tr th:each="article : ${articles}" th:if="${laboratoire.code == 'infolab1'}">
+          <tr th:each="article : ${articles}"
+        th:if="${laboratoires.find(lab => lab.code == 'infolab1' and lab.code == article.code)}">
             <td>
               <img th:src="@{'/articleimg/' + ${article.visuel}}" alt="Article Image">
             </td>
