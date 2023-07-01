@@ -1,10 +1,7 @@
 package com.Glab.LaboIntelligent.controllers;
 
+import java.io.File;
 import java.io.IOException;
-import java.util.List;
-import java.util.HashMap;
-
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,17 +12,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
-import com.Glab.LaboIntelligent.models.Departement;
-import com.Glab.LaboIntelligent.models.Laboratoire;
 
 import com.Glab.LaboIntelligent.models.Articles;
-import com.Glab.LaboIntelligent.repositories.DepartmentRepository;
-import com.Glab.LaboIntelligent.repositories.LaboratoiresRepository;
-import com.Glab.LaboIntelligent.services.impl.LaboratoiresServiceImpl;
-import com.Glab.LaboIntelligent.services.LaboratoireService;
 import com.Glab.LaboIntelligent.services.impl.ArticlesServiceImpl;
-
-import java.io.File;
 
 
 @Controller
@@ -33,9 +22,12 @@ import java.io.File;
 public class Articlescontroller {
 	@Autowired
 	private ArticlesServiceImpl articleService;
+
 	
 	
 public Articlescontroller() {
+
+
 		super();
 	}
 	
@@ -51,6 +43,7 @@ public Articlescontroller() {
 	
 	
 	@GetMapping("/addarticles")
+
 	public String addNew(Model model) {
 		Articles article = new Articles();
 		model.addAttribute("article", article);
@@ -62,12 +55,12 @@ public Articlescontroller() {
 		articleService.saveArticle(article);
      return "Addarticle";
 	}
+	
+	
 	  @PostMapping("/addarticles/uploadimg")
 	    public String uploadimg(@ModelAttribute("article") Articles article,
 	                              @RequestParam("file") MultipartFile file) throws IOException {
-		
-	        // Save the file
-	        if (!file.isEmpty()) {
+		    if (!file.isEmpty()) {
 	            String fileName = file.getOriginalFilename();
 	            String filePath = "gilab/LaboIntelligent/src/main/resources/static/articleimg/" + fileName; // Update the path to your images folder
 	            File dest = new File(filePath);
@@ -78,6 +71,10 @@ public Articlescontroller() {
 	        // Save the article
 	        articleService.saveArticle(article);
 	        return "redirect:/Addarticles";
+
+	
+
+	    
 	    }
 		
 

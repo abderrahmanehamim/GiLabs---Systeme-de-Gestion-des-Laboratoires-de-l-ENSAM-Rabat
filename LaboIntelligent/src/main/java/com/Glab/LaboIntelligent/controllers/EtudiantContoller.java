@@ -17,6 +17,7 @@ import com.Glab.LaboIntelligent.repositories.EtudiantRepository;
 import com.Glab.LaboIntelligent.services.EtudiantService;
 import com.Glab.LaboIntelligent.services.impl.ExcelService;
 import com.Glab.LaboIntelligent.helper.ExcelUploader;
+import com.Glab.LaboIntelligent.helper.ExcelUploader2Profs;
 
 
 @Controller
@@ -49,6 +50,25 @@ public class EtudiantContoller {
 		if (com.Glab.LaboIntelligent.helper.ExcelUploader.hasExcelFormat(file)) {
 			
 				fileService.saveExcelEtudiant(file);
+
+				message = "Uploaded the file successfully: " + file.getOriginalFilename();
+				model.addAttribute("Message", message);
+				return "excel";
+		}
+				
+
+		message = "Please upload an excel file!";
+		model.addAttribute("Message", message);
+		return "excel";
+	}
+	
+	@PostMapping("/Admin/uploadFileProf")
+	public String uploadFileProf (Model model, @RequestParam("file") MultipartFile file)throws IOException {
+		String message = "";
+
+		if (ExcelUploader2Profs.hasExcelFormat(file)) {
+			
+				fileService.saveExcelProf(file);
 
 				message = "Uploaded the file successfully: " + file.getOriginalFilename();
 				model.addAttribute("Message", message);

@@ -29,196 +29,167 @@ public class Articles {
 	@ManyToOne(cascade = CascadeType.ALL)
 	    @JoinColumn(name = "Code")
 	    private Laboratoire laboratoire;
+	 
 
- 
-public Articles() {
-}
+	public Articles() {
+		super();
+	}
 
+	public Articles(Long id, String articlenom, String domaine, String reference, String categorie, Integer quantite,
+			String visuel, String documentation, String description, Laboratoire laboratoire) {
+		super();
+		this.id = id;
+		this.articlenom = articlenom;
+		this.domaine = domaine;
+		this.reference = reference;
+		this.categorie = categorie;
+		this.quantite = quantite;
+		this.visuel = visuel;
+		Documentation = documentation;
+		this.description = description;
+		this.laboratoire = laboratoire;
+	}
 
-@Override
-public String toString() {
-	return "Articles [id=" + id + ", articlenom=" + articlenom + ", domaine=" + domaine + ", reference=" + reference
-			+ ", categorie=" + categorie + ", quantite=" + quantite + ", visuel=" + visuel + ", Documentation="
-			+ Documentation + ", description=" + description + ", laboratoire=" + laboratoire + "]";
-}
+	
+	/**
+	 * @return the id
+	 */
+	public Long getId() {
+		return id;
+	}
 
+	/**
+	 * @param id the id to set
+	 */
+	public void setId(Long id) {
+		this.id = id;
+	}
 
-public Articles(Long id, String articlenom, String domaine, String reference, String categorie, Integer quantite,
-		String visuel, String documentation, String description, Laboratoire laboratoire) {
-	super();
-	this.id = id;
-	this.articlenom = articlenom;
-	this.domaine = domaine;
-	this.reference = reference;
-	this.categorie = categorie;
-	this.quantite = quantite;
-	this.visuel = visuel;
-	Documentation = documentation;
-	this.description = description;
-	this.laboratoire = laboratoire;
-}
+	/**
+	 * @return the articlenom
+	 */
+	public String getArticlenom() {
+		return articlenom;
+	}
 
+	/**
+	 * @param articlenom the articlenom to set
+	 */
+	public void setArticlenom(String articlenom) {
+		this.articlenom = articlenom;
+	}
 
-/**
- * @return the id
- */
-public Long getId() {
-	return id;
-}
+	/**
+	 * @return the domaine
+	 */
+	public String getDomaine() {
+		return domaine;
+	}
 
+	/**
+	 * @param domaine the domaine to set
+	 */
+	public void setDomaine(String domaine) {
+		this.domaine = domaine;
+	}
 
-/**
- * @param id the id to set
- */
-public void setId(Long id) {
-	this.id = id;
-}
+	/**
+	 * @return the reference
+	 */
+	public String getReference() {
+		return reference;
+	}
 
+	/**
+	 * @param reference the reference to set
+	 */
+	public void setReference(String reference) {
+		this.reference = reference;
+	}
 
-/**
- * @return the articlenom
- */
-public String getArticlenom() {
-	return articlenom;
-}
+	/**
+	 * @return the categorie
+	 */
+	public String getCategorie() {
+		return categorie;
+	}
 
+	/**
+	 * @param categorie the categorie to set
+	 */
+	public void setCategorie(String categorie) {
+		this.categorie = categorie;
+	}
 
-/**
- * @param articlenom the articlenom to set
- */
-public void setArticlenom(String articlenom) {
-	this.articlenom = articlenom;
-}
+	/**
+	 * @return the quantite
+	 */
+	public Integer getQuantite() {
+		return quantite;
+	}
 
+	/**
+	 * @param quantite the quantite to set
+	 */
+	public void setQuantite(Integer quantite) {
+		this.quantite = quantite;
+	}
 
-/**
- * @return the domaine
- */
-public String getDomaine() {
-	return domaine;
-}
+	/**
+	 * @return the visuel
+	 */
+	public String getVisuel() {
+		return visuel;
+	}
 
+	/**
+	 * @param visuel the visuel to set
+	 */
+	public void setVisuel(String visuel) {
+		this.visuel = visuel;
+	}
 
-/**
- * @param domaine the domaine to set
- */
-public void setDomaine(String domaine) {
-	this.domaine = domaine;
-}
+	/**
+	 * @return the documentation
+	 */
+	public String getDocumentation() {
+		return Documentation;
+	}
 
+	/**
+	 * @param documentation the documentation to set
+	 */
+	public void setDocumentation(String documentation) {
+		Documentation = documentation;
+	}
 
-/**
- * @return the reference
- */
-public String getReference() {
-	return reference;
-}
+	/**
+	 * @return the description
+	 */
+	public String getDescription() {
+		return description;
+	}
 
+	/**
+	 * @param description the description to set
+	 */
+	public void setDescription(String description) {
+		this.description = description;
+	}
 
-/**
- * @param reference the reference to set
- */
-public void setReference(String reference) {
-	this.reference = reference;
-}
+	/**
+	 * @return the laboratoire
+	 */
+	public Laboratoire getLaboratoire() {
+		return laboratoire;
+	}
 
+	/**
+	 * @param laboratoire the laboratoire to set
+	 */
+	public void setLaboratoire(Laboratoire laboratoire) {
+		this.laboratoire = laboratoire;
+	}
 
-/**
- * @return the categorie
- */
-public String getCategorie() {
-	return categorie;
-}
-
-
-/**
- * @param categorie the categorie to set
- */
-public void setCategorie(String categorie) {
-	this.categorie = categorie;
-}
-
-
-/**
- * @return the quantite
- */
-public Integer getQuantite() {
-	return quantite;
-}
-
-
-/**
- * @param quantite the quantite to set
- */
-public void setQuantite(Integer quantite) {
-	this.quantite = quantite;
-}
-
-
-/**
- * @return the visuel
- */
-public String getVisuel() {
-	return visuel;
-}
-
-
-/**
- * @param visuel the visuel to set
- */
-public void setVisuel(String visuel) {
-	this.visuel = visuel;
-}
-
-
-/**
- * @return the documentation
- */
-public String getDocumentation() {
-	return Documentation;
-}
-
-
-/**
- * @param documentation the documentation to set
- */
-public void setDocumentation(String documentation) {
-	Documentation = documentation;
-}
-
-
-/**
- * @return the description
- */
-public String getDescription() {
-	return description;
-}
-
-
-/**
- * @param description the description to set
- */
-public void setDescription(String description) {
-	this.description = description;
-}
-
-
-/**
- * @return the laboratoire
- */
-public Laboratoire getLaboratoire() {
-	return laboratoire;
-}
-
-
-/**
- * @param laboratoire the laboratoire to set
- */
-public void setLaboratoire(Laboratoire laboratoire) {
-	this.laboratoire = laboratoire;
-}
-
-
-
-
+	
 }

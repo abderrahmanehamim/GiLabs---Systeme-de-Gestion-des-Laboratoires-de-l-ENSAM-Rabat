@@ -79,8 +79,9 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
 		.and().httpBasic();
 		
 		http.authorizeRequests(). antMatchers("/**").hasAuthority("Admin");
-		http.authorizeRequests(). antMatchers("/Etudiant/**").hasAuthority("Etudiant").anyRequest().authenticated();
-			
+		http.authorizeRequests(). antMatchers("/Etudiant/**").hasAuthority("Etudiant");
+	http.authorizeRequests(). antMatchers("/Professeur/**").hasAuthority("Professeur");
+
 		
 		
 

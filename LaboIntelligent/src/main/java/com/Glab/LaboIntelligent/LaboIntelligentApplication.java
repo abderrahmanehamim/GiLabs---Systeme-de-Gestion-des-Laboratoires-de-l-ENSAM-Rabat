@@ -45,14 +45,16 @@ public class LaboIntelligentApplication implements CommandLineRunner {
 		// initialise ROLES AND USERS //
 		AppRole r1= new AppRole("Etudiant");
 		AppRole r2= new AppRole("Admin");
-
+		AppRole r3= new AppRole("Professeur");
 		appRoleRepository.save(r1);
 		appRoleRepository.save(r2);
+		appRoleRepository.save(r3);
 
 		Collection<AppRole> listrole =new ArrayList<AppRole>();
 		Collection<AppRole> listroleAdmi =new ArrayList<AppRole>();
 		listroleAdmi.add(r2);
 		listrole.add(r1);
+	//	listrole.add(r3);
 		BCryptPasswordEncoder bcryptPaswwordEncoder=new BCryptPasswordEncoder(10, new SecureRandom());
 		String userPasswordEncrypted = bcryptPaswwordEncoder.encode("1234");
 		AppUser u6 =new AppUser("admin2@esp.mr", userPasswordEncrypted, listroleAdmi);

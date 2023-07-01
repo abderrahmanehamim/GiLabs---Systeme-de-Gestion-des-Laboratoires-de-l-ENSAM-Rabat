@@ -379,7 +379,7 @@
           <i class="bi bi-question-circle"></i>
           <span>F.A.Q</span>
         </a>
-      </li><!-- End F.A.Q Page Nav -->
+      </li><! End F.A.Q Page Nav -->
 
       <li class="nav-item">
         <a class="nav-link collapsed" th:href="@{/contact}">
@@ -407,7 +407,7 @@
           <i class="bi bi-dash-circle"></i>
           <span>Error 404</span>
         </a>
-      </li><!-- End Error 404 Page Nav -->
+      </li><! End Error 404 Page Nav -->
 
       <li class="nav-item">
         <a class="nav-link collapsed" href="pages-blank.html">
@@ -420,7 +420,9 @@
 
   </aside><!-- End Sidebar-->
     <main id="main" class="main">
-    <div class="row">
+    
+    <div class="row"></div>
+
 <section class="section dashboard">
   <form th:action="@{/addarticles}" th:object="${article}" method="POST" >
     <div class="form-group">
@@ -453,7 +455,7 @@
         <label for="inputCity">Catégorie</label>
         <input type="text" class="form-control" id="inputCity" th:field="*{categorie}">
       </div>
-     <!--
+     
 <div class="form-group col-md-4">
   <label for="inputState">Laboratoires</label>
   <select class="form-control" th:field="*{laboratoires.code}">
@@ -465,7 +467,7 @@
     
   </select>
 </div>
-      -->
+      
       <div class="form-group col-md-2">
         <label for="inputZip">Référence</label>
         <input type="text" class="form-control" id="inputZip" th:field="*{reference}">
@@ -479,11 +481,13 @@
     
     
     
-    
-    <button type="submit" class="btn btn-primary">Ajouter</button>
-  </form>
-</section>
-      
+
+ 					 <button type="submit" class="btn btn-primary">Ajouter</button>
+	</form>
+	
+
+      </section>
+
       
     </main> 
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
@@ -492,9 +496,9 @@
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src ="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
   <script src="assets/vendor/apexcharts/apexcharts.min.js"></script>
-  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="assets/vendor/chart.js/chart.umd.js"></script>
   <script src="assets/vendor/echarts/echarts.min.js"></script>
   <script src="assets/vendor/quill/quill.min.js"></script>
