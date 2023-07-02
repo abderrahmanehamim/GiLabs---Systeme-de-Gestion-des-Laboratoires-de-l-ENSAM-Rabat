@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+import javax.annotation.Resource;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -20,6 +22,8 @@ import com.Glab.LaboIntelligent.repositories.AppUserRepository;
 import com.Glab.LaboIntelligent.repositories.DepartmentRepository;
 import com.Glab.LaboIntelligent.repositories.EtudiantRepository;
 import com.Glab.LaboIntelligent.repositories.LaboratoiresRepository;
+
+import com.Glab.LaboIntelligent.services.FilesStorageService;
 
 @SpringBootApplication
 public class LaboIntelligentApplication implements CommandLineRunner {
@@ -38,10 +42,13 @@ public class LaboIntelligentApplication implements CommandLineRunner {
 	private DepartmentRepository departmentRepository ;
 	@Autowired
 	private  LaboratoiresRepository laboratoiresRepository ;
+	 @Resource
+	 FilesStorageService storageService;
 	
 	@Override
 	public void run(String... args) throws Exception {
 		
+		 storageService.init();
 		// initialise ROLES AND USERS //
 		AppRole r1= new AppRole("Etudiant");
 		AppRole r2= new AppRole("Admin");
