@@ -8,12 +8,11 @@ public interface LaboratoireService {
 	
 	List<Laboratoire> getAllLaboratoire();
 	
-	Laboratoire getLaboratoiresById(Long idlabs);
+	Laboratoire getLaboratoiresByCode(String code);
 
 	
     List<Laboratoire> saveAll(List<Laboratoire> laboratories);
 
-	void deleteArticleById(Long idarticles);
 
 	
 }

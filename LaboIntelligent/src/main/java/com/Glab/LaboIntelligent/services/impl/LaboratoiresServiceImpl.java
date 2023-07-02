@@ -26,9 +26,9 @@ public class LaboratoiresServiceImpl implements LaboratoireService{
 	}
 
 	@Override
-	public Laboratoire getLaboratoiresById(Long idlabs) {
+	public Laboratoire getLaboratoiresByCode(String code) {
 		
-		return laboratoiresRepository.findById(idlabs).get() ;
+		return laboratoiresRepository.getLabByCode(code) ;
 	}
 
 	@Override
@@ -37,17 +37,6 @@ public class LaboratoiresServiceImpl implements LaboratoireService{
 		return laboratoiresRepository.saveAll(laboratories);
 	}
 	
-	public void deleteArticleById(Long idarticles) {
-	    Articles article = articlesRepository.findById(idarticles).orElseThrow();
 
-	    // Remove the article from the associated laboratoire
-	    Laboratoire laboratoire = article.getLaboratoire();
-	    if (laboratoire != null) {
-	        laboratoire.getArticles().remove(article);
-	    }
-
-	    // Delete the article
-	    articlesRepository.delete(article);
-	}
 	
 }
