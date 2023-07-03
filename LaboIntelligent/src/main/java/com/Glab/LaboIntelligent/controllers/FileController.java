@@ -20,43 +20,42 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.Glab.LaboIntelligent.services.FilesStorageService;
 
+
 @Controller
 public class FileController {
 
   @Autowired
   FilesStorageService storageService;
 
-
-
+  @GetMapping("/")
+  public String homepage() {
+    return "redirect:/files";
+  }
 
   @GetMapping("/files/new")
   public String newFile(Model model) {
-    return "addpdf";
+    return "upload_form";
   }
 
   @PostMapping("/files/upload")
-  public String uploadFile(Model model, @RequestParam("file") MultipartFile file, RedirectAttributes redirectAttributes) {
+  public String uploadFile(Model model, @RequestParam("file") MultipartFile file) {
     String message = "";
 
     try {
       storageService.save(file);
 
       message = "Uploaded the file successfully: " + file.getOriginalFilename();
-      redirectAttributes.addFlashAttribute("message", message);
-
-      return "redirect:/files"; // Redirect to the list of files after successful upload
+      model.addAttribute("message", message);
     } catch (Exception e) {
       message = "Could not upload the file: " + file.getOriginalFilename() + ". Error: " + e.getMessage();
       model.addAttribute("message", message);
-
-      return "addpdf"; // Return to the addpdf.html view with the error message
     }
-  }
 
+    return "upload_form";
+  }
 
   @GetMapping("/files")
   public String getListFiles(Model model) {
-
     List<FileInfo> fileInfos = storageService.loadAll().map(path -> {
       String filename = path.getFileName().toString();
       String url = MvcUriComponentsBuilder
@@ -67,7 +66,7 @@ public class FileController {
 
     model.addAttribute("files", fileInfos);
 
-    return "allpdf";
+    return "files";
   }
 
   @GetMapping("/files/{filename:.+}")
