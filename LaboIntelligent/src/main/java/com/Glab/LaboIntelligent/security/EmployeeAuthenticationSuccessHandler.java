@@ -23,6 +23,7 @@ import com.Glab.LaboIntelligent.repositories.AppUserRepository;
 
 @Component
 public class EmployeeAuthenticationSuccessHandler implements AuthenticationSuccessHandler {
+	public  String email ;
 	private RedirectStrategy redirectStrategy = new DefaultRedirectStrategy();
 	@Autowired
 	private AppUserRepository appUserRepository;
@@ -60,15 +61,18 @@ public class EmployeeAuthenticationSuccessHandler implements AuthenticationSucce
 		 else if (hasAdminRole && user.isStatus()==false) {
 			 
 				System.out.println("ADMIN Authentication ");
-
+System.out.println(user.getEmail());
 				redirectStrategy.sendRedirect(arg0, arg1, "/Admin");
-			} 
+
+		 } 
 		else if (hasAdminRole ) {
 			System.out.println("ADMIN Authentication");
+			System.out.println(user.getEmail());
 
 			redirectStrategy.sendRedirect(arg0, arg1, "/Admin");
 		} else if (hasProfRole ) {
 			System.out.println("Prof Authentication");
+			System.out.println(user.getEmail());
 
 			redirectStrategy.sendRedirect(arg0, arg1, "/Prof");
 		} 
@@ -76,6 +80,12 @@ public class EmployeeAuthenticationSuccessHandler implements AuthenticationSucce
 		else {
 			throw new IllegalStateException();
 		}
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 }
