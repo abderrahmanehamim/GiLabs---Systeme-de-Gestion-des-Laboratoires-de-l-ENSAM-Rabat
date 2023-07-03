@@ -44,11 +44,7 @@ public class ApplicationController {
 
 	
 	
-	@GetMapping("laboratoire/{code}")
-	public String Laboratoires( @PathVariable String code) {
-		System.out.println(code);
-		return "laboratoires.html";
-	}
+	
 	
  @GetMapping("/Admin")
  

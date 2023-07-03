@@ -33,6 +33,17 @@ public class Laboratoire {
 	@OneToMany(mappedBy = "laboratoire")
 	private List<Articles> articles;
 	
+	public List<TP> getTps() {
+		return tps;
+	}
+
+	public void setTps(List<TP> tps) {
+		this.tps = tps;
+	}
+
+	@OneToMany(mappedBy = "laboratoire")
+	private List<TP> tps;
+	
 	public Laboratoire() {
 	}
 

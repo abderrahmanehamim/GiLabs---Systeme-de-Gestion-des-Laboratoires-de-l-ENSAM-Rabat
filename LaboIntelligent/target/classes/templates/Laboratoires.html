@@ -10,24 +10,24 @@
   <meta content="" name="keywords">
 
   <!-- Favicons -->
-  <link href="assets/img/favicon.png" rel="icon">
-  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+  <link th:href="@{/assets/img/favicon.png}" rel="icon">
+  <link  th:href="@{/assets/img/apple-touch-icon.png}" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
-  <link href="https://fonts.gstatic.com" rel="preconnect">
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+  <link  th:href="@{https://fonts.gstatic.com}" rel="preconnect">
+  <link  th:href="@{https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i}" rel="stylesheet">
 
   <!-- Vendor CSS Files -->
-  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-  <link href="assets/vendor/quill/quill.snow.css" rel="stylesheet">
-  <link href="assets/vendor/quill/quill.bubble.css" rel="stylesheet">
-  <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
-  <link href="assets/vendor/simple-datatables/style.css" rel="stylesheet">
+  <link  th:href="@{/assets/vendor/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+  <link  th:href="@{/assets/vendor/bootstrap-icons/bootstrap-icons.css}" rel="stylesheet">
+  <link  th:href="@{/assets/vendor/boxicons/css/boxicons.min.css}" rel="stylesheet">
+  <link  th:href="@{/assets/vendor/quill/quill.snow.css}" rel="stylesheet">
+  <link  th:href="@{/assets/vendor/quill/quill.bubble.css}" rel="stylesheet">
+  <link  th:href="@{/assets/vendor/remixicon/remixicon.css}" rel="stylesheet">
+  <link  th:href="@{/assets/vendor/simple-datatables/style.css}" rel="stylesheet">
 
   <!-- Template Main CSS File -->
-  <link href="assets/css/style.css" rel="stylesheet">
+  <link  th:href="@{/assets/css/style.css}" rel="stylesheet">
 
   <!-- =======================================================
   * Template Name: NiceAdmin
@@ -40,7 +40,7 @@
 
 <body>
 
-	      <!-- ======= Header ======= -->
+      <!-- ======= Header ======= -->
     <header id="header" class="header fixed-top d-flex align-items-center">
   
       <div class="d-flex align-items-center justify-content-between">
@@ -70,13 +70,13 @@
   
             <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
               <img src="assets/img/profile-img.jpg" alt="Profile" class="rounded-circle">
-              <span class="d-none d-md-block dropdown-toggle ps-2">K. Anderson</span>
+              <span class="d-none d-md-block dropdown-toggle ps-2" th:text="${username}"></span>
             </a><!-- End Profile Iamge Icon -->
   
             <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
               <li class="dropdown-header">
-                <h6>Kevin Anderson</h6>
-                <span>Web Designer</span>
+                <h6 th:text="${username}"></h6>
+                <span th:text="${role}"></span>
               </li>
               <li>
                 <hr class="dropdown-divider">
@@ -193,10 +193,17 @@
       </li><!-- End Tables Nav -->
 
        <li class="nav-item">
-          <a class="nav-link collapsed" data-bs-target="#charts-nav" data-bs-toggle="collapse" th:href="@{/travauxpratique}">
-            <i class="bi bi-bar-chart"></i><span>Travaux Pratiques</span>
+          <a class="nav-link collapsed"   th:href="@{/files}">
+            <i class="bi bi-bar-chart"></i><span> Afficher les TP</span>
           </a>
-        </li><!-- End Charts Nav -->
+        </li><!-- End afficher vd Nav -->
+        
+         <li class="nav-item">
+          <a class="nav-link collapsed"   th:href="@{/files/new}" >
+            <i class="bi bi-bar-chart"></i><span> Ajouter un TP</span>
+          </a>
+        </li><!-- ajouter un tp -->
+  
   
         <li class="nav-item">
           <a class="nav-link collapsed" data-bs-target="#icons-nav" data-bs-toggle="collapse" th:href="@{/formations}">
@@ -223,20 +230,150 @@
     </ul>
 
   </aside><!-- End Sidebar-->
+
   
-  <main id="main" class="main">
+   <main id="main" class="main">
 
     <div class="pagetitle">
+      <h1 th:text = "${lab.Laboname}"></h1>
       <nav>
         <ol class="breadcrumb">
-          <li class="breadcrumb-item align-items-center"><a href="index.html">Home</a></li>
+          <li class="breadcrumb-item"><a href="/">Home</a></li>
         </ol>
       </nav>
     </div><!-- End Page Title -->
 
+    <section class="section dashboard">
+      <div class="row">
 
+
+    <!-- ======= About Section ======= -->
+    <section id="about" class="about">
+      <div class="container">
+
+        <div class="section-title">
+          <h2 th:text = "${lab.Code}"></h2>
+<p th:text="${lab.Dep.DepartmentName} + ' - ' + ${lab.Laboname}"></p>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-4" data-aos="fade-right">
+            <img src="assets/img/news-1.jpg" class="img-fluid" alt="">
+          </div>
+          <div class="col-lg-8 pt-4 pt-lg-0 content" data-aos="fade-left">
+            <h3>Activité</h3>
+            <p class="fst-italic" th:text = "${lab.activite}">
+            </p>
+            <div class="row">
+              <div class="col-lg-6">
+                <ul>
+                  <li><i class="bi bi-chevron-right"></i> <strong>Code </strong> <span th:text = "${lab.Code}"></span></li>
+                  <li><i class="bi bi-chevron-right"></i> <strong>Département</strong> <span th:text = "${lab.Dep.DepartmentName}"></span></li>
+                </ul>
+              </div>
+           
+            </div>
+           
+          </div>
+        </div>
+        <div class="row">
+<br><br>
+<br><br>
+<br><br>
+<br><br>
+
+          <!-- ======= Services Section ======= -->
+    <section id="services" class="services">
+      <div class="container">
+        <br><br>
+       
+        
+        <div class="section-title" style="text-align: center;">
+          <h2>Travaux Pratiques</h2>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-4 col-md-6 icon-box" data-aos="fade-up">
+            <div class="icon"><i class="bi bi-card-checklist"></i></div>
+            <h4 class="title"><a href="">Tp1</a></h4>
+            <p class="description">Acquisition et traitement de signaux ECG</p>
+          </div>
+          <div class="col-lg-4 col-md-6 icon-box" data-aos="fade-up" data-aos-delay="100">
+            <div class="icon"><i class="bi bi-card-checklist"></i></div>
+            <h4 class="title"><a href="">TP2</a></h4>
+            <p class="description">Acquisition et traitement de signaux EMG</p>
+          </div>
+          <div class="col-lg-4 col-md-6 icon-box" data-aos="fade-up" data-aos-delay="200">
+            <div class="icon"><i class="bi bi-card-checklist"></i></div>
+            <h4 class="title"><a href="">Tp3</a></h4>
+            <p class="description">Acquisition et programmation sous LabVIEW</p>
+          </div>
+          <div class="col-lg-4 col-md-6 icon-box" data-aos="fade-up" data-aos-delay="300">
+            <div class="icon"><i class="bi bi-card-checklist"></i></div>
+            <h4 class="title"><a href="">Tp4</a></h4>
+            <p class="description">Serveur web embarqué</p>
+          </div>
+          <div class="col-lg-4 col-md-6 icon-box" data-aos="fade-up" data-aos-delay="400">
+            <div class="icon"><i class="bi bi-card-checklist"></i></div>
+            <h4 class="title"><a href="">Tp5</a></h4>
+            <p class="description">Module de commande simplifié d’une voiture</p>
+          </div>
+          <div class="col-lg-4 col-md-6 icon-box" data-aos="fade-up" data-aos-delay="500">
+            <div class="icon"><i class="bi bi-card-checklist"></i></div>
+            <h4 class="title"><a href="">Tp6</a></h4>
+            <p class="description">Compteur d’énergie connecté</p>
+          </div>
+        </div>
+        
+        
+               <div class="row">
+   <div class="row">
+    <div class="col-md-12">
+      <h4 class="text-center mb-4">Articles</h4>
+      <div class="table-wrap">
+        <table class="table">
+          <thead class="thead-primary">
+            <tr>
+              <th>Images</th>
+              <th>Nom d'Article</th>
+              <th>Domaine</th>
+              <th>Reference</th>
+              <th>Catégorie</th>
+              <th>Quantité</th>
+              <th>Documentation</th>
+              <th>Description</th>
+              <th>laboratoires</th>
+              <th>Modifier l'Article</th>
+              <th>Supprimer l'article</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr th:each="article : ${articles}">
+             <td>
+  <img th:src="@{'/articleimg/' + ${article.visuel}}" alt="Article Image" class="small-image">
+</td>
+              <td th:text="${article.articlenom}"></td>
+              <td th:text="${article.domaine}"></td>
+              <td th:text="${article.reference}"></td>
+              <td th:text="${article.categorie}"></td>
+              <td th:text="${article.quantite}"></td>
+              <td th:text="${article.documentation}"></td>
+              <td th:text="${article.description}"></td>
+              <td th:text="${article.laboratoire.Laboname}"></td>
+              <td>
+                <a th:href="@{'/articles/edit/' + ${article.id}}" class="btn btn-primary" id="editButton" data-toggle="modal" data-target=".bd-example-modal-lg">Modifier</a>
+              </td>
+              <td>
+                <a th:href="@{/articles/delete/{id=${article.id}}}" class="btn btn-primary" id="deleteButton">Supprimer</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
   </main><!-- End #main -->
-  
 
   <!-- ======= Footer ======= -->
   <footer id="footer" class="footer">
@@ -265,7 +402,7 @@
   <script src="assets/vendor/php-email-form/validate.js"></script>
 
   <!-- Template Main JS File -->
-  <script src="assets/js/main.js"></script>
+  <script th:src="@{assets/js/main.js}"></script>
 
 </body>
 
