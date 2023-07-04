@@ -41,7 +41,7 @@ public class ArticlesServiceImpl implements ArticlesService {
 
 	@Override
 	public void deleteArticleById(Long idarticles) {
-	    Articles article = articlesRepository.findById(idarticles)
+	 /*   Articles article = articlesRepository.findById(idarticles)
 	            .orElseThrow();
 	    // Remove the article from the associated laboratoire
 	    Laboratoire laboratoire = article.getLaboratoire();
@@ -50,7 +50,7 @@ public class ArticlesServiceImpl implements ArticlesService {
 	    }
 
 	    // Delete the article
-	    articlesRepository.delete(article);
+	    articlesRepository.delete(article);*/
 	}
 		
 	}
