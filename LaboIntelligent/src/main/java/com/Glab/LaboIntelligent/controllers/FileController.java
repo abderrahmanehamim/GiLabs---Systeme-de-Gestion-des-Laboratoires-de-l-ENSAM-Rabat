@@ -34,7 +34,7 @@ public class FileController {
 
   @GetMapping("/files/new")
   public String newFile(Model model) {
-    return "upload_form";
+    return "addpdf";
   }
 
   @PostMapping("/files/upload")
@@ -51,7 +51,7 @@ public class FileController {
       model.addAttribute("message", message);
     }
 
-    return "upload_form";
+    return "addpdf";
   }
 
   @GetMapping("/files")
@@ -66,7 +66,7 @@ public class FileController {
 
     model.addAttribute("files", fileInfos);
 
-    return "files";
+    return "allpdf";
   }
 
   @GetMapping("/files/{filename:.+}")

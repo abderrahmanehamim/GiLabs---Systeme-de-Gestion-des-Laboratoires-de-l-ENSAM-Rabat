@@ -60,7 +60,7 @@
 </dependency>
 
     <!-- Other dependencies -->
-    
+
     <!-- For handling file uploads -->
     <dependency>
         <groupId>org.springframework.boot</groupId>

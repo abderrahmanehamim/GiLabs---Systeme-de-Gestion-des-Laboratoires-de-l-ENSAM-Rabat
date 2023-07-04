@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -48,7 +49,8 @@ public class Articlescontroller {
         model.addAttribute("labs", labs);
         return "Addarticle.html";
     }
-
+    @Autowired
+    private Environment env;
     @PostMapping("/addarticles")
     public String articleForm(@ModelAttribute Articles article, Model model,
                               @RequestParam("articlenom") String articlenom,
@@ -61,8 +63,36 @@ public class Articlescontroller {
                               @RequestParam("reference") String reference,
                               @RequestParam("description") String description) {
 
+    	
         // Create a new Articles object and set its attributes using the form data
         Articles newArticle = new Articles();
+        
+        
+        // Handle article's image upload 
+        if(!file.isEmpty()) {
+        	String fileName = file.getOriginalFilename();
+        
+        
+            String uploadDirectory = "C:\\Users\\H-R\\Documents\\workspace_pfa\\gilab\\LaboIntelligent\\src\\main\\resources\\static\\articleimg";
+            System.out.println("#######################################");
+            System.out.println(uploadDirectory);
+            System.out.println("#######################################");
+
+        	File dest = new File(uploadDirectory,fileName);
+        	try {
+				file.transferTo(dest);
+				newArticle.setVisuel(fileName);
+			} catch (IllegalStateException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+        	
+        }
+        
+        
         newArticle.setArticlenom(articlenom);
         newArticle.setDocumentation(documentation);
         newArticle.setQuantite(quantite);
