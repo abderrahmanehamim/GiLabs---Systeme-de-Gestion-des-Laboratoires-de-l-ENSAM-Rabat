@@ -240,53 +240,48 @@
       </nav>
     </div><!-- End Page Title -->
 
-			<div class="col-md-6 col-xs-12 spacer col-md-offset-3">
-				<div  class="panel panel-default">
-
-
-					<!-- <div class="panel-heading">Saisie des Etudiants </div> -->
-					<div  class="panel-body">
-
-						<form th:action="@{/Admin/uploadFileEtudiant}" method="post"
-							enctype="multipart/form-data">
-
-							<div class="form-group">
-
-								<label class="control-label">importer le fichier des
-									etudiants</label> <input type="file" name="file" accept=".xls,.xlsx"
-									class="form-control" />
-
-								
-								<button type="submit" class="btn btn-success">
-									<span class="glyphicon glyphicon-upload"></span> Uploader le fichier
-								</button>
-
-							</div>
-
-						</form>
-					</div>
-	<div  class="panel-body">
-
-						<form th:action="@{/Admin/uploadFileProf}" method="post"
-							enctype="multipart/form-data">
-
-							<div class="form-group">
-
-								<label class="control-label">importer le fichier des
-									professeurs</label> <input type="file" name="file" accept=".xls,.xlsx"
-									class="form-control" />
-
-								
-								<button type="submit" class="btn btn-success">
-									<span class="glyphicon glyphicon-upload"></span> Uploader le fichier
-								</button>
-
-							</div>
-
-						</form>
-					</div>
-
+	<div class="col-md-6 col-xs-12 spacer col-md-offset-3">
+	<div class="panel panel-default">
+		<img th:src="@{example_image_1.jpg}" alt="Example Image 1">
+		<div class="panel-heading">
+			<h3>Header for the First Upload</h3>
+		</div>
+		<div class="panel-body">
+			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis eget felis leo. Sed luctus turpis eu felis gravida, ac finibus metus molestie.</p>
+			<form th:action="@{/Admin/uploadFileEtudiant}" method="post" enctype="multipart/form-data">
+				<div class="form-group">
+					<label class="control-label">Importer le fichier des étudiants</label>
+					<input type="file" name="file" accept=".xls,.xlsx" class="form-control" />
+					<button type="submit" class="btn btn-success">
+						<span class="glyphicon glyphicon-upload"></span> Uploader le fichier
+					</button>
+				</div>
+			</form>
+		</div>
+	</div>
 </div>
+
+<div class="col-md-6 col-xs-12 spacer col-md-offset-3">
+	<div class="panel panel-default">
+		<img th:src="@{example_image_2.jpg}" alt="Example Image 2">
+		<div class="panel-heading">
+			<h3>Header for the Second Upload</h3>
+		</div>
+		<div class="panel-body">
+			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis eget felis leo. Sed luctus turpis eu felis gravida, ac finibus metus molestie.</p>
+			<form th:action="@{/Admin/uploadFileProf}" method="post" enctype="multipart/form-data">
+				<div class="form-group">
+					<label class="control-label">Importer le fichier des professeurs</label>
+					<input type="file" name="file" accept=".xls,.xlsx" class="form-control" />
+					<button type="submit" class="btn btn-success">
+						<span class="glyphicon glyphicon-upload"></span> Uploader le fichier
+					</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+
 
   </main><!-- End #main -->
   
