@@ -49,8 +49,7 @@ public class ApplicationController {
 	
 	
  @GetMapping("/Admin")
- 
- public String goHome(Model model) {
+  public String goHome(Model model) {
 	/*
 	 *  get email and role and name  
 	 * 

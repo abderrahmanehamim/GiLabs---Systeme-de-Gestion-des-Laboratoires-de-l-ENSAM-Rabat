@@ -366,7 +366,9 @@ newArticle.setLaboratoire(labo);
 	
     @GetMapping("articles/delete/{id}")
     public String deleteArticle(@PathVariable Long id) {
-        articleService.deleteArticleById(id);
-        return "redirect:/articles";
+      System.out.println("@!#################################");
+    //articleService.deleteArticleById(id);
+      articlesRepository.deleteById(id);
+      return "redirect:/articles";
     }
 }
