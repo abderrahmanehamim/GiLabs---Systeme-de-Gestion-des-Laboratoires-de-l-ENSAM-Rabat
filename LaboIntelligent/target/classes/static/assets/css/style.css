@@ -621,6 +621,9 @@ h6 {
 @media (max-width: 1199px) {
   .sidebar {
     left: -300px;
+    
+     transform: scale(0.5);
+            transform-origin: center;
   }
 }
 

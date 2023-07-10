@@ -77,10 +77,13 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
 		.and().formLogin().successHandler(successHandler).loginPage("/login").usernameParameter("email")
 		.passwordParameter("password").permitAll()
 		.and().httpBasic();
-		
-		http.authorizeRequests(). antMatchers("/**").hasAuthority("Admin");
 		http.authorizeRequests(). antMatchers("/Etudiant/**").hasAuthority("Etudiant");
-	http.authorizeRequests(). antMatchers("/Professeur/**").hasAuthority("Professeur");
+
+		http.authorizeRequests(). antMatchers("/Etudiant/**").hasAuthority("Etudiant");
+
+		http.authorizeRequests(). antMatchers("/**").hasAnyAuthority("Admin","Professeur");
+
+		http.authorizeRequests(). antMatchers("/Admin/Home").hasAuthority("Admin");
 
 		
 		

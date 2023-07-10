@@ -191,15 +191,11 @@
               <i class="bi bi-circle"></i><span>Tout les Articles</span>
             </a>
           </li>
-          <li>
-            <a th:href="@{/Articlelabo}">
-              <i class="bi bi-circle"></i><span>Par Laboratoires</span>
-            </a>
-          </li>
+        
         </ul>
       </li><!-- End Tables Nav -->
- <li class="nav-item">
-        <a class="nav-link collapsed" data-bs-target="#components-nav3" data-bs-toggle="collapse" href="#">
+
+      <a class="nav-link collapsed" data-bs-target="#components-nav3" data-bs-toggle="collapse" href="#">
           <i class="bi bi-menu-button-wide"></i><span>ViewRessources</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
         <ul id="components-nav3" class="nav-content collapse " data-bs-parent="#sidebar-nav">
@@ -290,7 +286,9 @@
           
         </ul>
       </li><!-- End Tables Nav -->
-  
+      
+        
+
      
       <li class="nav-item">
         <a class="nav-link collapsed" th:href="@{/adduser}">
@@ -323,8 +321,8 @@
 
  <main>
 	 
- <div class="container-fluid" style="max-width: 600px; margin: 0 auto;">
-    <h2 class="text-center">Les Document de Département  Génie Mecanique </h2>
+ <div class="container-fluid" style="max-width: 800px; margin: 0 auto;">
+    <h2 class="text-center">Les Document de Département de Génie Informatique</h2>
 
     <div th:if="${files.size() > 0}">
       <table class="table table-hover">
@@ -343,7 +341,7 @@
             
             <td><a th:href="@{${file.url}}">Download</a></td>
             <td>
-             <a th:href="@{'/files/delete/' + ${file.name}}" th:fileName="${file.name}" data-url="@{'/files/delete/' + ${file.name}}"
+             <a th:href="@{'/files3/delete/' + ${file.name}}" th:fileName="${file.name}" data-url="@{'/files3/delete/' + ${file.name}}"
   title="Delete this file" class="fa-regular fa-trash-can icon-dark btn-delete"></a>
             </td>
           </tr>
@@ -356,68 +354,10 @@
     </div>
   </div>
   
-  <div class="modal fade text-center" id="confirmModal">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title">Delete Confirmation</h5>
-          <button type="button" class="close" data-dismiss="modal">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-  
-        <div class="modal-body">
-          <span id="confirmText"></span>
-        </div>
-  
-        <div class="modal-footer">
-          <a type="button" id="yesBtn" class="btn btn-danger">Yes</a>
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
-        </div>
-      </div>
-    </div>
-  </div>
-  
-  
 
-  <script type="text/javascript">
-  $(document).ready(function () {
-  $(".btn-delete").on("click", function (e) {
-    e.preventDefault();
-    var link = $(this);
-
-    var fileName = link.attr("fileName");
-    var deleteUrl = link.data("url");
-
-    $("#yesBtn").attr("href", deleteUrl);
-    $("#confirmText").html("Do you want to delete the File: <strong>" + fileName + "</strong>?");
-    $("#confirmModal").modal();
-  });
-
-  $("#yesBtn").on("click", function () {
-    var deleteUrl = $(this).attr("href");
-
-    // Perform the deletion action by sending an AJAX request to the server
-    $.ajax({
-      url: deleteUrl,
-      type: "DELETE",
-      success: function () {
-        // Handle the success case (e.g., removing the deleted row from the table)
-        $("#confirmModal").modal("hide");
-        // ... additional code to handle the row removal or UI update
-      },
-      error: function () {
-        // Handle the error case
-        $("#confirmModal").modal("hide");
-        // ... additional code to handle the error or show an error message
-      }
-    });
-  });
-});
-
-  </script>
 
   </main><!-- End #main -->
+  
   
 
   <!-- ======= Footer ======= -->

@@ -25,7 +25,7 @@ import com.Glab.LaboIntelligent.repositories.*;
 
 public class ExcelUploader {
 	public static String TYPE = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
-	static String[] HEADERs = { "Matricule", "Prénom" ,"Nom", "Semestre", "Filiére", "Email" };
+	static String[] HEADERs = { "Matricule", "Prénom" ,"Nom", "Semestre", "Departement", "Email" };
 	static String SHEET = "Feuille 1";
 	@Autowired
 	EtudiantRepository etudiantRepository;
@@ -50,7 +50,8 @@ public class ExcelUploader {
 			int rowNumber = 0;
 			while (rows.hasNext()) {
 				Row currentRow = rows.next();
-
+                
+			
 				// skip header
 				if (rowNumber == 0) {
 					rowNumber++;
@@ -58,6 +59,8 @@ public class ExcelUploader {
 				}
 
 				Iterator<Cell> cellsInRow = currentRow.iterator();
+				Cell currentCell = cellsInRow.next();
+if(currentCell.getNumericCellValue() <1) break ;
 				AppUser user =new AppUser();
 				AppRole r1= new AppRole("Etudiant");
 				Collection<AppRole> listrole =new ArrayList<AppRole>();
@@ -67,27 +70,30 @@ public class ExcelUploader {
 				BCryptPasswordEncoder bcryptPaswwordEncoder=new BCryptPasswordEncoder(10, new SecureRandom());
 				int cellIdx = 0;
 				while (cellsInRow.hasNext()) {
-					Cell currentCell = cellsInRow.next();
 
 					switch (cellIdx) {
 					case 0:
+						System.out.println("student.setMatricule((long) currentCell.getNumericCellValue()");
 						student.setMatricule((long) currentCell.getNumericCellValue());
 						
 						break;
 
 					case 1:
+						System.out.println("prenom");
 						student.setPrenom(currentCell.getStringCellValue());
 						
 						break;
 
 					case 2:
+						System.out.println("nom");
 						student.setNom(currentCell.getStringCellValue());
 						
 						break;
 
 		
 					case 4:
-						departemet.setDepartmentName(currentCell.getStringCellValue());
+						System.out.println("id");
+						departemet.setIddepart((long) currentCell.getNumericCellValue());
 						
 						break;
 
@@ -105,10 +111,11 @@ public class ExcelUploader {
 					String userPasswordEncrypted = bcryptPaswwordEncoder.encode("1234");
 					user.setUserPassword(userPasswordEncrypted);
 					user.setUserRoles(listrole);
+					 currentCell = cellsInRow.next();
 					cellIdx++;
 				}
 				
-           if(departemet.getDepartmentName()!="") {
+           if(true) {
                 student.setDep(departemet);
            }
 				students.add(student);
@@ -154,7 +161,7 @@ public class ExcelUploader {
 
 					switch (cellIdx) {
 					case 0:
-						
+
 						break;
 
 					case 1:
@@ -174,6 +181,7 @@ public class ExcelUploader {
 						break;
 
 					case 5:
+if(currentCell.getStringCellValue().equals(""))  break ;
 						user.setEmail(currentCell.getStringCellValue());
 						break;
 
@@ -186,8 +194,8 @@ public class ExcelUploader {
 					user.setUserRoles(listrole);
 					cellIdx++;
 				}
-				
-           
+				if(user.getEmail() == null) break;
+           System.out.println(user);
 				users.add(user);
 			}
 

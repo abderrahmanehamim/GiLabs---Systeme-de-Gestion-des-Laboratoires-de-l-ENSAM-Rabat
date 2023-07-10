@@ -185,7 +185,7 @@
   </a>
   <ul id="components-labs" class="nav-content collapse " data-bs-parent="#sidebar-nav">
     <li th:each="lab : ${labs}">
-      <a th:href="@{/laboratoire/__${lab.code}__}">
+      <a th:href="@{/laboratoire/_${lab.code}_}">
         <i class="bi bi-circle"></i><span th:text="${lab.code}"></span>
       </a>
     </li>
@@ -323,6 +323,15 @@
         <a class="nav-link collapsed" th:href="@{addLabo}">
           <i class="bi bi-card-list"></i>
           <span>Ajouter Labo</span>
+        </a>
+      </li><!-- End Register Page Nav -->
+
+
+
+           <li class="nav-item">
+        <a class="nav-link collapsed" th:href="@{changePass}">
+          <i class="bi bi-card-list"></i>
+          <span>Modifier Password</span>
         </a>
       </li><!-- End Register Page Nav -->
 
@@ -465,7 +474,9 @@
           <td th:text="${lab.Laboname}"> </td>
           <td th:text="${lab.Code}"></td>
           <td th:text="${lab.activite}"></td>
+
         <td><a th:href="@{/laboratoire/__${lab.code}__}" class="btn btn-primary">Accéder</a></td>
+
           
           </tr>
           

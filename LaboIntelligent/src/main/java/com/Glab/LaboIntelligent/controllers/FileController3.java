@@ -44,10 +44,7 @@ public class FileController3 {
 		@Autowired
 		
 		private DepartmentRepository departmentRepository;
-	  @GetMapping("/")
-	  public String homepage() {
-	    return "redirect:/files3";
-	  }
+	
 
 	  @GetMapping("/files3/new")
 	  public String newFile(Model model) {

@@ -12,6 +12,11 @@ import javax.persistence.ManyToMany;
 
 @Entity
 public class AppUser implements Serializable {
+	@Override
+	public String toString() {
+		return "AppUser [email=" + email + ", Userstatus=" + Userstatus + ", userRoles=" + userRoles + "]";
+	}
+
 	@Id
 
 	private String email;

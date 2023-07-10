@@ -52,19 +52,19 @@
 
 <body>
 
-      <!-- ======= Header ======= -->
-    <header id="header" class="header fixed-top d-flex align-items-center">
+ <header id="header" class="header fixed-top d-flex align-items-center">
   
       <div class="d-flex align-items-center justify-content-between">
-        <a href="index.html" class="logo d-flex align-items-center">
+        <a href="/Admin/Home" class="logo d-flex align-items-center">
           <img src="assets/img/logo.png" alt="">
           <span class="d-none d-lg-block">GiLabs</span>
         </a>
-        <i class="bi bi-list toggle-sidebar-btn"></i>
+ 
       </div><!-- End Logo -->
   
      
   
+
       <nav class="header-nav ms-auto">
         <ul class="d-flex align-items-center">
   
@@ -191,11 +191,7 @@
               <i class="bi bi-circle"></i><span>Tout les Articles</span>
             </a>
           </li>
-          <li>
-            <a th:href="@{/Articlelabo}">
-              <i class="bi bi-circle"></i><span>Par Laboratoires</span>
-            </a>
-          </li>
+     
         </ul>
       </li><!-- End Tables Nav -->
 
@@ -219,32 +215,10 @@
         
         </li><!-- End Icons Nav -->
 
-     
-      <li class="nav-item">
-        <a class="nav-link collapsed" th:href="@{/adduser}">
-          <i class="bi bi-card-list"></i>
-          <span>Ajouter Utilisateur</span>
-        </a>
-      </li><!-- End Register Page Nav -->
-      <li class="nav-item">
-        <a class="nav-link collapsed" th:href="@{addarticles}">
-          <i class="bi bi-card-list"></i>
-          <span>Ajouter Article</span>
-        </a>
-      </li><!-- End Register Page Nav -->
 
      
-           <li class="nav-item">
-        <a class="nav-link collapsed" th:href="@{addLabo}">
-          <i class="bi bi-card-list"></i>
-          <span>Ajouter Labo</span>
-        </a>
-      </li><!-- End Register Page Nav -->
-
-
-    </ul>
-
-  </aside><!-- End Sidebar-->
+  
+    </header><!-- End Header -->  
 
 
 
@@ -366,8 +340,6 @@
               <th>Documentation</th>
               <th>Description</th>
               <th>laboratoires</th>
-              <th>Modifier l'Article</th>
-              <th>Supprimer l'article</th>
             </tr>
           </thead>
         <tbody>
@@ -383,13 +355,6 @@
               <td th:text="${article.documentation}"></td>
               <td th:text="${article.description}"></td>
               <td th:text="${article.laboratoire.Laboname}"></td>
-                           <td>
-                <a th:href="@{/articles/edit/__${article.id}__}" class="btn btn-primary" id="editButton" data-toggle="modal" data-target=".bd-example-modal-lg">Modifier</a>
-              </td>
-              <td>
-                <a th:href="@{/articles/delete/__${article.id}__}" class="btn btn-primary" id="deleteButton">Supprimer</a>
-              </td>
-
             </tr>
           </tbody>        </table>
       </div>

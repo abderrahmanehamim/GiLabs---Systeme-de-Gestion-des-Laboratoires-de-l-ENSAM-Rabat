@@ -56,25 +56,25 @@ public class EmployeeAuthenticationSuccessHandler implements AuthenticationSucce
 		user=appUserRepository.findByEmail(email);
 		if (hasEtudiantRole) {
 			System.out.println("ETUDIANT Authentication");
-			redirectStrategy.sendRedirect(arg0, arg1, "/Etudiant");
+			redirectStrategy.sendRedirect(arg0, arg1, "/Etudiant/Home");
 		} 
 		 else if (hasAdminRole && user.isStatus()==false) {
 			 
 				System.out.println("ADMIN Authentication ");
 System.out.println(user.getEmail());
-				redirectStrategy.sendRedirect(arg0, arg1, "/Admin");
+				redirectStrategy.sendRedirect(arg0, arg1, "/Admin/Home");
 
 		 } 
 		else if (hasAdminRole ) {
 			System.out.println("ADMIN Authentication");
 			System.out.println(user.getEmail());
 
-			redirectStrategy.sendRedirect(arg0, arg1, "/Admin");
+			redirectStrategy.sendRedirect(arg0, arg1, "/Admin/Home");
 		} else if (hasProfRole ) {
 			System.out.println("Prof Authentication");
 			System.out.println(user.getEmail());
 
-			redirectStrategy.sendRedirect(arg0, arg1, "/Prof");
+			redirectStrategy.sendRedirect(arg0, arg1, "/Prof/Home");
 		} 
 	 
 		else {
