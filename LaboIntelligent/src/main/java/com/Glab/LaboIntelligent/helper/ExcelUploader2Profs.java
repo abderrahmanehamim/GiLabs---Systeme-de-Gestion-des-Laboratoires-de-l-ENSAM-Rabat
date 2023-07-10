@@ -25,10 +25,10 @@ import com.Glab.LaboIntelligent.repositories.*;
 
 public class ExcelUploader2Profs {
 	public static String TYPE = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
-	static String[] HEADERs = {  "Prénom" ,"Nom", "Filiére", "Email" };
+	static String[] HEADERs = {  "Prénom" ,"Nom", "Departement", "Email" };
 	static String SHEET = "Feuille 1";
 	@Autowired
-	EtudiantRepository etudiantRepository;
+	ProfesseurRepository profRepository;
 	public static boolean hasExcelFormat(MultipartFile file) {
 
 		if (!TYPE.equals(file.getContentType())) {
@@ -58,16 +58,20 @@ public class ExcelUploader2Profs {
 				}
 
 				Iterator<Cell> cellsInRow = currentRow.iterator();
+				Cell currentCell = cellsInRow.next();
+if(currentCell.getStringCellValue().equals("")) break ;
+
 				AppUser user =new AppUser();
 				AppRole r1= new AppRole("Professeur");
 				Collection<AppRole> listrole =new ArrayList<AppRole>();
 				listrole.add(r1);
+
+			
 				Professeur prof = new Professeur();
 				Departement departemet = new Departement();
 				BCryptPasswordEncoder bcryptPaswwordEncoder=new BCryptPasswordEncoder(10, new SecureRandom());
 				int cellIdx = 0;
 				while (cellsInRow.hasNext()) {
-					Cell currentCell = cellsInRow.next();
 
 					switch (cellIdx) {
 
@@ -83,11 +87,14 @@ public class ExcelUploader2Profs {
 
 		
 					case 2:
-						departemet.setDepartmentName(currentCell.getStringCellValue());
 						
+						departemet.setIddepart((long) currentCell.getNumericCellValue());
+						
+											
 						break;
 
 					case 3:
+
 						prof.setEmail(currentCell.getStringCellValue());
 						user.setEmail(currentCell.getStringCellValue());
 						break;
@@ -99,10 +106,12 @@ public class ExcelUploader2Profs {
 					String userPasswordEncrypted = bcryptPaswwordEncoder.encode("1234");
 					user.setUserPassword(userPasswordEncrypted);
 					user.setUserRoles(listrole);
+					 currentCell = cellsInRow.next();
+
 					cellIdx++;
 				}
 				
-           if(departemet.getDepartmentName()!="") {
+           if(true) {
         	   prof.setDep(departemet);
            }
 				profs.add(prof);
@@ -137,7 +146,7 @@ public class ExcelUploader2Profs {
 
 				Iterator<Cell> cellsInRow = currentRow.iterator();
 				AppUser user =new AppUser();
-				AppRole r1= new AppRole("Professeur");
+				AppRole r1= new AppRole("Etudiant");
 				Collection<AppRole> listrole =new ArrayList<AppRole>();
 				listrole.add(r1);
 				
@@ -148,7 +157,7 @@ public class ExcelUploader2Profs {
 
 					switch (cellIdx) {
 					case 0:
-						
+
 						break;
 
 					case 1:
@@ -158,16 +167,8 @@ public class ExcelUploader2Profs {
 					case 2:
 						
 						break;
-
-					case 3:
-						
-						break;
-
-					case 4:
-						
-						break;
-
-					case 5:
+					case 3 :
+if(currentCell.getStringCellValue().equals(""))  break ;
 						user.setEmail(currentCell.getStringCellValue());
 						break;
 
@@ -180,8 +181,8 @@ public class ExcelUploader2Profs {
 					user.setUserRoles(listrole);
 					cellIdx++;
 				}
-				
-           
+				if(user.getEmail() == null) break;
+           System.out.println(user);
 				users.add(user);
 			}
 
@@ -194,4 +195,6 @@ public class ExcelUploader2Profs {
 	}
 	
 
+	
+	
 }

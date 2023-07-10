@@ -338,17 +338,17 @@ e.printStackTrace();
 System.out.println(articlenom);
 if(!articlenom.equals(""))
 newArticle.setArticlenom(articlenom);
-if(documentation != null)
+if(!documentation.equals(""))
 newArticle.setDocumentation(documentation);
 if(quantite != 0)
 newArticle.setQuantite(quantite);
 if(domaine != null)
 newArticle.setDomaine(domaine);
-if(categorie != null)
+if(!categorie.equals(""))
 newArticle.setCategorie(categorie);
-if(reference != null)
+if(!reference.equals(""))
 newArticle.setReference(reference);
-if(description != null)
+if(!description.equals(""))
 newArticle.setDescription(description);
 
 // Set the lab attribute by fetching the Labo from the database based on labCode
@@ -367,8 +367,15 @@ newArticle.setLaboratoire(labo);
     @GetMapping("articles/delete/{id}")
     public String deleteArticle(@PathVariable Long id) {
       System.out.println("@!#################################");
-    //articleService.deleteArticleById(id);
-      articlesRepository.deleteById(id);
-      return "redirect:/articles";
+ 
+  
+  Articles article = articleService.getArticleById(id);
+  Laboratoire laboratoire = article.getLaboratoire();
+  laboratoire.getArticles().remove(article); // Remove the article from the laboratoire's collection
+  laboratoiresRepository.save(laboratoire); // Save the updated laboratoire
+  //articleService.deleteArticleById(id);
+  article.setLaboratoire(null);
+  articlesRepository.deleteById(id);
+  return "redirect:/articles";
     }
 }
