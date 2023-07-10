@@ -24,6 +24,15 @@ import com.Glab.LaboIntelligent.repositories.EtudiantRepository;
 import com.Glab.LaboIntelligent.repositories.LaboratoiresRepository;
 
 import com.Glab.LaboIntelligent.services.FilesStorageService;
+import com.Glab.LaboIntelligent.services.FilesStorageService2;
+import com.Glab.LaboIntelligent.services.FilesStorageService3;
+import com.Glab.LaboIntelligent.services.FilesStorageService4;
+import com.Glab.LaboIntelligent.services.FilesStorageService5;
+import com.Glab.LaboIntelligent.services.FilesStorageService6;
+import com.Glab.LaboIntelligent.services.FilesStorageService7;
+
+
+
 
 @SpringBootApplication
 public class LaboIntelligentApplication implements CommandLineRunner {
@@ -44,23 +53,42 @@ public class LaboIntelligentApplication implements CommandLineRunner {
 	private  LaboratoiresRepository laboratoiresRepository ;
 	 @Resource
 	 FilesStorageService storageService;
+	 @Resource
+	 FilesStorageService2 storageService2;
+	 @Resource
+	 FilesStorageService3 storageService3;
+	 @Resource
+	 FilesStorageService4 storageService4;
+	 @Resource
+	 FilesStorageService5 storageService5;
+	 @Resource
+	 FilesStorageService6 storageService6;
+	 @Resource
+	 FilesStorageService7 storageService7;
+
+	 
 	
 	@Override
 	public void run(String... args) throws Exception {
 		
 		 storageService.init();
+		 storageService2.init();
+		 storageService3.init();
+		 storageService4.init();
+		 storageService5.init();
+		 storageService6.init();
+		 storageService7.init();
+		 
 		// initialise ROLES AND USERS //
-		AppRole r1= new AppRole("Etudiant");
 		AppRole r2= new AppRole("Admin");
-		AppRole r3= new AppRole("Professeur");
-		appRoleRepository.save(r1);
+//		appRoleRepository.save(r1);
 		appRoleRepository.save(r2);
-		appRoleRepository.save(r3);
+	//	appRoleRepository.save(r3);
 
 		Collection<AppRole> listrole =new ArrayList<AppRole>();
 		Collection<AppRole> listroleAdmi =new ArrayList<AppRole>();
 		listroleAdmi.add(r2);
-		listrole.add(r1);
+		//listrole.add(r1);
 	//	listrole.add(r3);
 		BCryptPasswordEncoder bcryptPaswwordEncoder=new BCryptPasswordEncoder(10, new SecureRandom());
 		String userPasswordEncrypted = bcryptPaswwordEncoder.encode("1234");

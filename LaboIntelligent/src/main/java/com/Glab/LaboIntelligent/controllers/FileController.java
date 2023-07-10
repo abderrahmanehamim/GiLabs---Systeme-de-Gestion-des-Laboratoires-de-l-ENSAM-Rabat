@@ -16,8 +16,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.method.annotation.MvcUriComponentsBuilder;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
- import com.Glab.LaboIntelligent.models.FileInfo;
 
+import com.Glab.LaboIntelligent.models.FileInfo;
+import com.Glab.LaboIntelligent.repositories.AppUserRepository;
+import com.Glab.LaboIntelligent.repositories.ArticlesRepository;
+import com.Glab.LaboIntelligent.repositories.DepartmentRepository;
+import com.Glab.LaboIntelligent.repositories.EtudiantRepository;
+import com.Glab.LaboIntelligent.repositories.LaboratoiresRepository;
+import com.Glab.LaboIntelligent.repositories.ProfesseurRepository;
 import com.Glab.LaboIntelligent.services.FilesStorageService;
 
 
@@ -26,14 +32,25 @@ public class FileController {
 
   @Autowired
   FilesStorageService storageService;
+	@Autowired
+	private LaboratoiresRepository laboratoiresRepository;
+	@Autowired
+	private ArticlesRepository articlesRepository;
+	@Autowired
+	EtudiantRepository etudiantRepository;
+	@Autowired
+	ProfesseurRepository professeurRepository;
+	@Autowired
+	private AppUserRepository appUserRepository;
 
-  @GetMapping("/")
-  public String homepage() {
-    return "redirect:/files";
-  }
+	@Autowired
+	
+	private DepartmentRepository departmentRepository;
+
 
   @GetMapping("/files/new")
   public String newFile(Model model) {
+		
     return "addpdf";
   }
 
@@ -43,14 +60,16 @@ public class FileController {
 
     try {
       storageService.save(file);
-
+  	
       message = "Uploaded the file successfully: " + file.getOriginalFilename();
       model.addAttribute("message", message);
     } catch (Exception e) {
-      message = "Could not upload the file: " + file.getOriginalFilename() + ". Error: " + e.getMessage();
+    
+    	
+    	message = "Could not upload the file: " + file.getOriginalFilename() + ". Error: " + e.getMessage();
       model.addAttribute("message", message);
     }
-
+	
     return "addpdf";
   }
 
@@ -65,7 +84,7 @@ public class FileController {
     }).collect(Collectors.toList());
 
     model.addAttribute("files", fileInfos);
-
+	
     return "allpdf";
   }
 
@@ -73,6 +92,8 @@ public class FileController {
   public ResponseEntity<Resource> getFile(@PathVariable String filename) {
     Resource file = storageService.load(filename);
 
+    
+    
     return ResponseEntity.ok()
         .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + file.getFilename() + "\"").body(file);
   }

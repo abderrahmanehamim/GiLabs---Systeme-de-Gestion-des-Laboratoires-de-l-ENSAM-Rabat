@@ -9,37 +9,50 @@
   <meta content="" name="description">
   <meta content="" name="keywords">
 
-  <!-- Favicons -->
-  <link href="assets/img/favicon.png" rel="icon">
-  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+ <link th:href="@{/assets/img/favicon.png}" rel="icon">
+  <link  th:href="@{/assets/img/apple-touch-icon.png}" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
-  <link href="https://fonts.gstatic.com" rel="preconnect">
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+  <link  th:href="@{https://fonts.gstatic.com}" rel="preconnect">
+  <link  th:href="@{https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i}" rel="stylesheet">
 
   <!-- Vendor CSS Files -->
-  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-  <link href="assets/vendor/quill/quill.snow.css" rel="stylesheet">
-  <link href="assets/vendor/quill/quill.bubble.css" rel="stylesheet">
-  <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
-  <link href="assets/vendor/simple-datatables/style.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-  <!-- Template Main CSS File -->
-  <link href="assets/css/style.css" rel="stylesheet">
+  <link  th:href="@{/assets/vendor/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+  <link  th:href="@{/assets/vendor/bootstrap-icons/bootstrap-icons.css}" rel="stylesheet">
+  <link  th:href="@{/assets/vendor/boxicons/css/boxicons.min.css}" rel="stylesheet">
+  <link  th:href="@{/assets/vendor/quill/quill.snow.css}" rel="stylesheet">
+  <link  th:href="@{/assets/vendor/quill/quill.bubble.css}" rel="stylesheet">
+  <link  th:href="@{/assets/vendor/remixicon/remixicon.css}" rel="stylesheet">
+  <link  th:href="@{/assets/vendor/simple-datatables/style.css}" rel="stylesheet">
 
-  <!-- =======================================================
-  * Template Name: NiceAdmin
-  * Updated: Mar 09 2023 with Bootstrap v5.2.3
-  * Template URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
+  <!-- Template Main CSS File -->
+  <link  th:href="@{/assets/css/style.css}" rel="stylesheet">
+     <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+<link rel="stylesheet"th:href="@{https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css}">
+
+
+  <link rel="stylesheet" th:href="@{https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.2/css/bootstrap.min.css}">
+  
+
+  <!-- Template Main CSS File -->
+  <link th:href="@{assets/css/style.css}" rel="stylesheet">
+
+  <!-- ======================================================= pdf ======================================================== -->
+   <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" />
+  <link rel="stylesheet"th:href="@{https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css}"
+    integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <script type="text/javascript" th:src="@{/webjars/jquery/jquery.min.js}"></script>
+  <script type="text/javascript" th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+    <script th:src="@{https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js}"></script>
+<script th:src="@{https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.2/js/bootstrap.bundle.min.js}"></script>
+
+ 
 </head>
+
 <body>
 
-           <!-- ======= Header ======= -->
+      <!-- ======= Header ======= -->
     <header id="header" class="header fixed-top d-flex align-items-center">
   
       <div class="d-flex align-items-center justify-content-between">
@@ -50,12 +63,7 @@
         <i class="bi bi-list toggle-sidebar-btn"></i>
       </div><!-- End Logo -->
   
-      <div class="search-bar">
-        <form class="search-form d-flex align-items-center" method="POST" action="#">
-          <input type="text" name="query" placeholder="Search" title="Enter search keyword">
-          <button type="submit" title="Search"><i class="bi bi-search"></i></button>
-        </form>
-      </div><!-- End Search Bar -->
+     
   
       <nav class="header-nav ms-auto">
         <ul class="d-flex align-items-center">
@@ -226,6 +234,14 @@
       </li><!-- End Register Page Nav -->
 
      
+           <li class="nav-item">
+        <a class="nav-link collapsed" th:href="@{addLabo}">
+          <i class="bi bi-card-list"></i>
+          <span>Ajouter Labo</span>
+        </a>
+      </li><!-- End Register Page Nav -->
+
+
     </ul>
 
   </aside><!-- End Sidebar-->
@@ -267,15 +283,16 @@
               <td th:text="${article.documentation}"></td>
               <td th:text="${article.description}"></td>
               <td th:text="${article.laboratoire.Laboname}"></td>
-              <td>
-                <a th:href="@{'/articles/edit/' + ${article.id}}" class="btn btn-primary" id="editButton" data-toggle="modal" data-target=".bd-example-modal-lg">Modifier</a>
+                           <td>
+                <a th:href="@{/articles/edit/__${article.id}__}" class="btn btn-primary" id="editButton" >Modifier</a>
               </td>
               <td>
-                <a th:href="@{/articles/delete/{id=${article.id}}}" class="btn btn-primary" id="deleteButton">Supprimer</a>
+                <a th:href="@{/articles/delete/__${article.id}__}" class="btn btn-primary" id="deleteButton">Supprimer</a>
               </td>
+
             </tr>
           </tbody>
-        </table>z
+        </table>
       </div>
     </div>
   </div>

@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>GiLabs - Gestion Intelligent des Laboratoires ENSAM Rabat</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+ <link th:href="@{/assets/img/favicon.png}" rel="icon">
+  <link  th:href="@{/assets/img/apple-touch-icon.png}" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link  th:href="@{https://fonts.gstatic.com}" rel="preconnect">
+  <link  th:href="@{https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i}" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link  th:href="@{/assets/vendor/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+  <link  th:href="@{/assets/vendor/bootstrap-icons/bootstrap-icons.css}" rel="stylesheet">
+  <link  th:href="@{/assets/vendor/boxicons/css/boxicons.min.css}" rel="stylesheet">
+  <link  th:href="@{/assets/vendor/quill/quill.snow.css}" rel="stylesheet">
+  <link  th:href="@{/assets/vendor/quill/quill.bubble.css}" rel="stylesheet">
+  <link  th:href="@{/assets/vendor/remixicon/remixicon.css}" rel="stylesheet">
+  <link  th:href="@{/assets/vendor/simple-datatables/style.css}" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link  th:href="@{/assets/css/style.css}" rel="stylesheet">
+     <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+<link rel="stylesheet"th:href="@{https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css}">
+
+
+  <link rel="stylesheet" th:href="@{https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.2/css/bootstrap.min.css}">
+  
+
+  <!-- Template Main CSS File -->
+  <link th:href="@{assets/css/style.css}" rel="stylesheet">
+
+  <!-- ======================================================= pdf ======================================================== -->
+   <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" />
+  <link rel="stylesheet"th:href="@{https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css}"
+    integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <script type="text/javascript" th:src="@{/webjars/jquery/jquery.min.js}"></script>
+  <script type="text/javascript" th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+    <script th:src="@{https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js}"></script>
+<script th:src="@{https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.2/js/bootstrap.bundle.min.js}"></script>
+
+ 
+</head>
+
+<body>
+
+      <!-- ======= Header ======= -->
+    <header id="header" class="header fixed-top d-flex align-items-center">
+  
+      <div class="d-flex align-items-center justify-content-between">
+        <a href="index.html" class="logo d-flex align-items-center">
+          <img src="assets/img/logo.png" alt="">
+          <span class="d-none d-lg-block">GiLabs</span>
+        </a>
+        <i class="bi bi-list toggle-sidebar-btn"></i>
+      </div><!-- End Logo -->
+  
+     
+  
+      <nav class="header-nav ms-auto">
+        <ul class="d-flex align-items-center">
+  
+          <li class="nav-item d-block d-lg-none">
+            <a class="nav-link nav-icon search-bar-toggle " href="#">
+              <i class="bi bi-search"></i>
+            </a>
+  
+          <li class="nav-item dropdown pe-3">
+  
+            <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
+              <img src="assets/img/profile-img.jpg" alt="Profile" class="rounded-circle">
+              <span class="d-none d-md-block dropdown-toggle ps-2" th:text="${username}"></span>
+            </a><!-- End Profile Iamge Icon -->
+  
+            <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
+              <li class="dropdown-header">
+                <h6 th:text="${username}"></h6>
+                <span th:text="${role}"></span>
+              </li>
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+  
+           
+          
+  
+              <li>
+                <a class="dropdown-item d-flex align-items-center" href="/logout">
+                  <i class="bi bi-box-arrow-right"></i>
+                  <span>Sign Out</span>
+                </a>
+              </li>
+  
+            </ul><!-- End Profile Dropdown Items -->
+          </li><!-- End Profile Nav -->
+  
+        </ul>
+      </nav><!-- End Icons Navigation -->
+  
+    </header><!-- End Header -->
+  
+ 
+
+  <!-- ======= Sidebar ======= -->
+  <aside id="sidebar" class="sidebar">
+
+    <ul class="sidebar-nav" id="sidebar-nav">
+
+      <li class="nav-item">
+        <a class="nav-link " href="/Admin">
+          <i class="bi bi-grid"></i>
+          <span>Home</span>
+        </a>
+      </li><!-- End Dashboard Nav -->
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-menu-button-wide"></i><span>Departements</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+          
+          <li>
+
+            <a th:href="@{/meca}">
+
+              <i class="bi bi-circle"></i><span>Génie Mecanique</span>
+            </a>
+          </li>
+          <li>
+            <a th:href="@{/math}">
+              <i class="bi bi-circle"></i><span>Mathematiques Appliquees</span>
+            </a>
+          </li>
+          <li>
+            <a th:href="@{/info}">
+              <i class="bi bi-circle"></i><span>Génie Informatique</span>
+            </a>
+          </li>
+          <li>
+            <a th:href="@{/elect}">
+              <i class="bi bi-circle"></i><span>Génie Electrique</span>
+            </a>
+          </li>
+          <li>
+            <a th:href="@{/langue}">
+              <i class="bi bi-circle"></i><span>Langues/Communication</span>
+            </a>
+          </li>
+          <li>
+            <a th:href="@{/eco}">
+              <i class="bi bi-circle"></i><span>Génie Economie et Management</span>
+            </a>
+          </li>
+          <li>
+            <a th:href="@{/biom}">
+              <i class="bi bi-circle"></i><span>Génie Biomédical</span>
+            </a>
+          </li>
+          
+        </ul>
+      </li><!-- End Components Nav -->
+
+    <li class="nav-item">
+  <a class="nav-link collapsed" data-bs-target="#components-labs" data-bs-toggle="collapse" href="#">
+    <i class="bi bi-menu-button-wide"></i><span>Laboratoire</span><i class="bi bi-chevron-down ms-auto"></i>
+  </a>
+  <ul id="components-labs" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+    <li th:each="lab : ${labs}">
+      <a th:href="@{/laboratoire/__${lab.code}__}">
+        <i class="bi bi-circle"></i><span th:text="${lab.code}"></span>
+      </a>
+    </li>
+  </ul>
+</li>
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#tables-nav" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-layout-text-window-reverse"></i><span>Articles</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="tables-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+          <li>
+            <a th:href="@{/articles}">
+              <i class="bi bi-circle"></i><span>Tout les Articles</span>
+            </a>
+          </li>
+          <li>
+            <a th:href="@{/Articlelabo}">
+              <i class="bi bi-circle"></i><span>Par Laboratoires</span>
+            </a>
+          </li>
+        </ul>
+      </li><!-- End Tables Nav -->
+
+     <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#components-nav3" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-menu-button-wide"></i><span>ViewRessources</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="components-nav3" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+          
+          <li>
+
+            <a  th:href="@{/files}">
+
+              <i class="bi bi-circle"></i><span> Génie Mecanique</span>
+            </a>
+          </li>
+          <li>
+            <a th:href="@{/files2}">
+              <i class="bi bi-circle"></i><span>  Mathematiques Appliquees</span>
+            </a>
+          </li>
+          <li>
+            <a th:href="@{/files3}">
+              <i class="bi bi-circle"></i><span>Génie Informatique</span>
+            </a>
+          </li>
+          <li>
+            <a th:href="@{/files4}">
+              <i class="bi bi-circle"></i><span>Génie Electrique</span>
+            </a>
+          </li>
+          <li>
+            <a th:href="@{/files5}">
+              <i class="bi bi-circle"></i><span>Langues/Communication</span>
+            </a>
+          </li>
+          <li>
+            <a th:href="@{/files6}">
+              <i class="bi bi-circle"></i><span>Génie Economie et Management</span>
+            </a>
+          </li>
+          <li>
+            <a th:href="@{/files7}">
+              <i class="bi bi-circle"></i><span>Génie Biomédical</span>
+            </a>
+          </li>
+          
+        </ul>
+      </li><!-- End Tables Nav -->
+          <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#components-nav2" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-menu-button-wide"></i><span>UploadRessources</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="components-nav2" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+          
+          <li>
+
+            <a  th:href="@{/files/new}">
+
+              <i class="bi bi-circle"></i><span>Ajouter sur Génie Mecanique</span>
+            </a>
+          </li>
+          <li>
+            <a th:href="@{/files2/new}">
+              <i class="bi bi-circle"></i><span>Ajouter sur Mathematiques Appliquees</span>
+            </a>
+          </li>
+          <li>
+            <a th:href="@{/files3/new}">
+              <i class="bi bi-circle"></i><span>Ajouter sur Génie Informatique</span>
+            </a>
+          </li>
+          <li>
+            <a th:href="@{/files4/new}">
+              <i class="bi bi-circle"></i><span>Ajouter sur Génie Electrique</span>
+            </a>
+          </li>
+          <li>
+            <a th:href="@{/files5/new}">
+              <i class="bi bi-circle"></i><span>Ajouter sur Langues/Communication</span>
+            </a>
+          </li>
+          <li>
+            <a th:href="@{/files6/new}">
+              <i class="bi bi-circle"></i><span>Ajouter sur Génie Economie et Management</span>
+            </a>
+          </li>
+          <li>
+            <a th:href="@{/files7/new}">
+              <i class="bi bi-circle"></i><span>Ajouter sur Génie Biomédical</span>
+            </a>
+          </li>
+          
+        </ul>
+      </li><!-- End Tables Nav -->
+      
+  
+        
+
+     
+      <li class="nav-item">
+        <a class="nav-link collapsed" th:href="@{/adduser}">
+          <i class="bi bi-card-list"></i>
+          <span>Ajouter Utilisateur</span>
+        </a>
+      </li><!-- End Register Page Nav -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" th:href="@{addarticles}">
+          <i class="bi bi-card-list"></i>
+          <span>Ajouter Article</span>
+        </a>
+      </li><!-- End Register Page Nav -->
+
+     
+           <li class="nav-item">
+        <a class="nav-link collapsed" th:href="@{addLabo}">
+          <i class="bi bi-card-list"></i>
+          <span>Ajouter Labo</span>
+        </a>
+      </li><!-- End Register Page Nav -->
+
+
+    </ul>
+
+  </aside><!-- End Sidebar-->
+
+
+
+  <main id="main" class="main">
+
+  <div class="container" style="max-width: 800px">
+  <h3 class="mb-3">Ajouter Document sur  Mathematiques Appliquees</h3>
+
+
+  <form
+    id="uploadForm"
+    method="post"
+    th:action="@{/files2/upload}"
+    enctype="multipart/form-data">
+    <input id="input-file" type="file" name="file" />
+    <button class="btn btn-sm btn-outline-success float-right" type="submit">
+      Upload
+    </button>
+  </form>
+
+  <div
+    th:if="${message != null}"
+    class="alert alert-secondary alert-dismissible fade show text-center message mt-3"
+    role="alert">
+    [[${message}]]
+    <button type="button" class="close btn-sm" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">×</span>
+    </button>
+  </div>
+</div>
+
+  </main><!-- End #main -->
+  
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer" class="footer">
+    <div class="copyright">
+      &copy; Copyright <strong><span>ENSAM Rabat</span></strong>. All Rights Reserved
+    </div>
+    <div class="credits">
+      <!-- All the links in the footer should remain intact. -->
+      <!-- You can delete the links only if you purchased the pro version. -->
+      <!-- Licensing information: https://bootstrapmade.com/license/ -->
+      <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/ -->
+      Designed by INDIA Students</a>
+    </div>
+  </footer><!-- End Footer -->
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/apexcharts/apexcharts.min.js"></script>
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/chart.js/chart.umd.js"></script>
+  <script src="assets/vendor/echarts/echarts.min.js"></script>
+  <script src="assets/vendor/quill/quill.min.js"></script>
+  <script src="assets/vendor/simple-datatables/simple-datatables.js"></script>
+  <script src="assets/vendor/tinymce/tinymce.min.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.2/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="assets/js/main.js"></script>
+
+
+</body>
+
+</html>

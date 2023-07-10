@@ -55,8 +55,9 @@
     crossorigin="anonymous" referrerpolicy="no-referrer" />
   <script type="text/javascript" th:src="@{/webjars/jquery/jquery.min.js}"></script>
   <script type="text/javascript" th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
-    <script th:src="@{https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js}"></script>
-<script th:src="@{https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.2/js/bootstrap.bundle.min.js}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.2/js/bootstrap.bundle.min.js"></script>
+  
 
  
 </head>
@@ -68,18 +69,13 @@
   
       <div class="d-flex align-items-center justify-content-between">
         <a href="index.html" class="logo d-flex align-items-center">
-          <img src="assets/img/logo.png" alt="">
+          <img th:src="@{/assets/img/logo.png}" alt="">
           <span class="d-none d-lg-block">GiLabs</span>
         </a>
         <i class="bi bi-list toggle-sidebar-btn"></i>
       </div><!-- End Logo -->
   
-      <div class="search-bar">
-        <form class="search-form d-flex align-items-center" method="POST" action="#">
-          <input type="text" name="query" placeholder="Search" title="Enter search keyword">
-          <button type="submit" title="Search"><i class="bi bi-search"></i></button>
-        </form>
-      </div><!-- End Search Bar -->
+     
   
       <nav class="header-nav ms-auto">
         <ul class="d-flex align-items-center">
@@ -92,7 +88,7 @@
           <li class="nav-item dropdown pe-3">
   
             <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-              <img src="assets/img/profile-img.jpg" alt="Profile" class="rounded-circle">
+              <img th:src="@{/assets/img/profile-img.jpg}" alt="Profile" class="rounded-circle">
               <span class="d-none d-md-block dropdown-toggle ps-2" th:text="${username}"></span>
             </a><!-- End Profile Iamge Icon -->
   
@@ -123,7 +119,6 @@
   
     </header><!-- End Header -->
   
- 
 
   <!-- ======= Sidebar ======= -->
   <aside id="sidebar" class="sidebar">
@@ -214,26 +209,100 @@
           </li>
         </ul>
       </li><!-- End Tables Nav -->
+ <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#components-nav3" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-menu-button-wide"></i><span>ViewRessources</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="components-nav3" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+          
+          <li>
 
-       <li class="nav-item">
-          <a class="nav-link collapsed"   th:href="@{/files}">
-            <i class="bi bi-bar-chart"></i><span> Afficher les TP</span>
-          </a>
-        </li><!-- End afficher vd Nav -->
-        
-         <li class="nav-item">
-          <a class="nav-link collapsed"   th:href="@{/files/new}" >
-            <i class="bi bi-bar-chart"></i><span> Ajouter un TP</span>
-          </a>
-        </li><!-- ajouter un tp -->
+            <a  th:href="@{/files}">
+
+              <i class="bi bi-circle"></i><span> Génie Mecanique</span>
+            </a>
+          </li>
+          <li>
+            <a th:href="@{/files2}">
+              <i class="bi bi-circle"></i><span>  Mathematiques Appliquees</span>
+            </a>
+          </li>
+          <li>
+            <a th:href="@{/files3}">
+              <i class="bi bi-circle"></i><span>Génie Informatique</span>
+            </a>
+          </li>
+          <li>
+            <a th:href="@{/files4}">
+              <i class="bi bi-circle"></i><span>Génie Electrique</span>
+            </a>
+          </li>
+          <li>
+            <a th:href="@{/files5}">
+              <i class="bi bi-circle"></i><span>Langues/Communication</span>
+            </a>
+          </li>
+          <li>
+            <a th:href="@{/files6}">
+              <i class="bi bi-circle"></i><span>Génie Economie et Management</span>
+            </a>
+          </li>
+          <li>
+            <a th:href="@{/files7}">
+              <i class="bi bi-circle"></i><span>Génie Biomédical</span>
+            </a>
+          </li>
+          
+        </ul>
+      </li><!-- End Tables Nav -->
+          <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#components-nav2" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-menu-button-wide"></i><span>UploadRessources</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="components-nav2" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+          
+          <li>
+
+            <a  th:href="@{/files/new}">
+
+              <i class="bi bi-circle"></i><span>Ajouter sur Génie Mecanique</span>
+            </a>
+          </li>
+          <li>
+            <a th:href="@{/files2/new}">
+              <i class="bi bi-circle"></i><span>Ajouter sur Mathematiques Appliquees</span>
+            </a>
+          </li>
+          <li>
+            <a th:href="@{/files3/new}">
+              <i class="bi bi-circle"></i><span>Ajouter sur Génie Informatique</span>
+            </a>
+          </li>
+          <li>
+            <a th:href="@{/files4/new}">
+              <i class="bi bi-circle"></i><span>Ajouter sur Génie Electrique</span>
+            </a>
+          </li>
+          <li>
+            <a th:href="@{/files5/new}">
+              <i class="bi bi-circle"></i><span>Ajouter sur Langues/Communication</span>
+            </a>
+          </li>
+          <li>
+            <a th:href="@{/files6/new}">
+              <i class="bi bi-circle"></i><span>Ajouter sur Génie Economie et Management</span>
+            </a>
+          </li>
+          <li>
+            <a th:href="@{/files7/new}">
+              <i class="bi bi-circle"></i><span>Ajouter sur Génie Biomédical</span>
+            </a>
+          </li>
+          
+        </ul>
+      </li><!-- End Tables Nav -->
   
-  
-        <li class="nav-item">
-          <a class="nav-link collapsed" data-bs-target="#icons-nav" data-bs-toggle="collapse" th:href="@{/formations}">
-            <i class="bi bi-gem"></i><span>Formations</span>
-          </a>
         
-        </li><!-- End Icons Nav -->
 
      
       <li class="nav-item">
@@ -369,7 +438,47 @@
       </div>
     </section><!-- End Services Section -->
 
-   
+       <!-- ======= Services Section ======= -->
+    <section id="services" class="services">
+      <div class="container">
+
+        <div class="section-title">
+          <h2>Laboratoires</h2>
+          <p>Les Laboratoires existe dans l'Ensam Rabat </p>
+        </div>
+ <div class="section-title" style="text-align: center;">
+          <h2>Tous Les laboratoires</h2>
+        </div>
+        <div class="table-wrap">
+       <table class="table">
+          <thead class="thead-primary">
+          <tr>
+          <th>Intitulé </th>
+          <th>Code</th>
+          <th>description</th>
+          <th></th>
+          
+          </tr>
+          </thead>
+          <tbody>
+			     <tr th:each="lab : ${deplabs}">
+          <td th:text="${lab.Laboname}"> </td>
+          <td th:text="${lab.Code}"></td>
+          <td th:text="${lab.activite}"></td>
+        <td><a th:href="@{/laboratoire/__${lab.code}__}" class="btn btn-primary">Accéder</a></td>
+          
+          </tr>
+          
+          </tbody>
+          </table>
+          </div>
+        <br>
+        <br>
+        
+     
+      </div>
+    </section><!-- End Services Section -->
+      
 
     <!-- ======= Features Section ======= -->
     <section id="features" class="features">
@@ -412,49 +521,49 @@
 
           <div class="col-lg-3 col-md-4 col-xs-6">
             <div class="client-logo">
-              <img src="assets/img/clients/1.png" class="img-fluid" alt="">
+              <img th:src="@{/assets/img/clients/1.png}" class="img-fluid" alt="">
             </div>
           </div>
 
           <div class="col-lg-3 col-md-4 col-xs-6">
             <div class="client-logo">
-              <img src="assets/img/clients/7.png" class="img-fluid" alt="">
+              <img th:src="@{/assets/img/clients/7.png}" class="img-fluid" alt="">
             </div>
           </div>
 
           <div class="col-lg-3 col-md-4 col-xs-6">
             <div class="client-logo">
-              <img src="assets/img/clients/8.png" class="img-fluid" alt="">
+              <img th:src="@{/assets/img/clients/8.png}" class="img-fluid" alt="">
             </div>
           </div>
 
           <div class="col-lg-3 col-md-4 col-xs-6">
             <div class="client-logo">
-              <img src="assets/img/clients/2.png" class="img-fluid" alt="">
+              <img th:src="@{/assets/img/clients/2.png}" class="img-fluid" alt="">
             </div>
           </div>
 
           <div class="col-lg-3 col-md-4 col-xs-6">
             <div class="client-logo">
-              <img src="assets/img/clients/3.png" class="img-fluid" alt="">
+              <img th:src="@{/assets/img/clients/3.png}" class="img-fluid" alt="">
             </div>
           </div>
 
           <div class="col-lg-3 col-md-4 col-xs-6">
             <div class="client-logo">
-              <img src="assets/img/clients/4.png" class="img-fluid" alt="">
+              <img th:src="@{/assets/img/clients/4.png}" class="img-fluid" alt="">
             </div>
           </div>
 
           <div class="col-lg-3 col-md-4 col-xs-6">
             <div class="client-logo">
-              <img src="assets/img/clients/5.png" class="img-fluid" alt="">
+              <img th:src="@{/assets/img/clients/5.png}" class="img-fluid" alt="">
             </div>
           </div>
 
           <div class="col-lg-3 col-md-4 col-xs-6">
             <div class="client-logo">
-              <img src="assets/img/clients/6.png" class="img-fluid" alt="">
+              <img th:src="@{/assets/img/clients/6.png}" class="img-fluid" alt="">
             </div>
           </div>
 
@@ -590,7 +699,7 @@
   <script th:src="@{assets/vendor/isotope-layout/isotope.pkgd.min.js}"></script>
   <script th:src="@{assets/vendor/swiper/swiper-bundle.min.js}"></script>
   <script th:src="@{assets/vendor/php-email-form/validate.js}"></script>
-   <script th:src="@{https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.2/js/bootstrap.bundle.min.js}"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.2/js/bootstrap.bundle.min.js"></script>
 
   <!-- Template Main JS File -->
   <script th:src="@{assets/js/main.js}"></script>

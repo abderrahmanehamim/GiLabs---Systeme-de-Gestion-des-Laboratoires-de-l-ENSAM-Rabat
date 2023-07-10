@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,12 +15,19 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.Glab.LaboIntelligent.models.AppRole;
+import com.Glab.LaboIntelligent.models.AppUser;
 import com.Glab.LaboIntelligent.models.Articles;
 import com.Glab.LaboIntelligent.models.Departement;
+import com.Glab.LaboIntelligent.models.Etudiant;
 import com.Glab.LaboIntelligent.models.Laboratoire;
+import com.Glab.LaboIntelligent.models.Professeur;
+import com.Glab.LaboIntelligent.repositories.AppUserRepository;
 import com.Glab.LaboIntelligent.repositories.ArticlesRepository;
 import com.Glab.LaboIntelligent.repositories.DepartmentRepository;
+import com.Glab.LaboIntelligent.repositories.EtudiantRepository;
 import com.Glab.LaboIntelligent.repositories.LaboratoiresRepository;
+import com.Glab.LaboIntelligent.repositories.ProfesseurRepository;
 
 @Controller
 public class laboratoirecontroller {
@@ -28,6 +37,15 @@ public class laboratoirecontroller {
 LaboratoiresRepository laboratoiresRepository;
 @Autowired
 ArticlesRepository articlesRepository;
+
+@Autowired
+EtudiantRepository etudiantRepository;
+@Autowired
+ProfesseurRepository professeurRepository;
+@Autowired
+private AppUserRepository appUserRepository;
+
+
 	@GetMapping("laboratoire/{code}")
 	public String Laboratoires(Model model, @PathVariable String code) {
 		
@@ -41,6 +59,9 @@ ArticlesRepository articlesRepository;
 
 		
 		model.addAttribute("lab", laboratoiresRepository.getLabByCode(code));
+
+		
+		
 		return "laboratoires.html";
 	}
 
@@ -50,6 +71,8 @@ ArticlesRepository articlesRepository;
 	    public String addNew(Model model) {
 	        List<Departement> deps = departmentRepository.findAll();
 	        model.addAttribute("deps", deps);
+	    	
+	        
 	        return "AddLabo.html";
 	    }
 

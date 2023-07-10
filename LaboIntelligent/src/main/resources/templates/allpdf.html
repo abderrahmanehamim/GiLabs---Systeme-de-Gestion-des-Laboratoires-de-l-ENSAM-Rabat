@@ -51,6 +51,7 @@
 </head>
 
 <body>
+
       <!-- ======= Header ======= -->
     <header id="header" class="header fixed-top d-flex align-items-center">
   
@@ -62,12 +63,7 @@
         <i class="bi bi-list toggle-sidebar-btn"></i>
       </div><!-- End Logo -->
   
-      <div class="search-bar">
-        <form class="search-form d-flex align-items-center" method="POST" action="#">
-          <input type="text" name="query" placeholder="Search" title="Enter search keyword">
-          <button type="submit" title="Search"><i class="bi bi-search"></i></button>
-        </form>
-      </div><!-- End Search Bar -->
+     
   
       <nav class="header-nav ms-auto">
         <ul class="d-flex align-items-center">
@@ -202,27 +198,99 @@
           </li>
         </ul>
       </li><!-- End Tables Nav -->
+ <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#components-nav3" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-menu-button-wide"></i><span>ViewRessources</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="components-nav3" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+          
+          <li>
 
-       <li class="nav-item">
-          <a class="nav-link collapsed"   th:href="@{/files}">
-            <i class="bi bi-bar-chart"></i><span> Afficher les TP</span>
-          </a>
-        </li><!-- End afficher vd Nav -->
-        
-         <li class="nav-item">
-          <a class="nav-link collapsed"   th:href="@{/files/new}" >
-            <i class="bi bi-bar-chart"></i><span> Ajouter un TP</span>
-          </a>
-        </li><!-- ajouter un tp -->
-  
-  
-        <li class="nav-item">
-          <a class="nav-link collapsed" data-bs-target="#icons-nav" data-bs-toggle="collapse" th:href="@{/formations}">
-            <i class="bi bi-gem"></i><span>Formations</span>
-          </a>
-        
-        </li><!-- End Icons Nav -->
+            <a  th:href="@{/files}">
 
+              <i class="bi bi-circle"></i><span> Génie Mecanique</span>
+            </a>
+          </li>
+          <li>
+            <a th:href="@{/files2}">
+              <i class="bi bi-circle"></i><span>  Mathematiques Appliquees</span>
+            </a>
+          </li>
+          <li>
+            <a th:href="@{/files3}">
+              <i class="bi bi-circle"></i><span>Génie Informatique</span>
+            </a>
+          </li>
+          <li>
+            <a th:href="@{/files4}">
+              <i class="bi bi-circle"></i><span>Génie Electrique</span>
+            </a>
+          </li>
+          <li>
+            <a th:href="@{/files5}">
+              <i class="bi bi-circle"></i><span>Langues/Communication</span>
+            </a>
+          </li>
+          <li>
+            <a th:href="@{/files6}">
+              <i class="bi bi-circle"></i><span>Génie Economie et Management</span>
+            </a>
+          </li>
+          <li>
+            <a th:href="@{/files7}">
+              <i class="bi bi-circle"></i><span>Génie Biomédical</span>
+            </a>
+          </li>
+          
+        </ul>
+      </li><!-- End Tables Nav -->
+          <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#components-nav2" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-menu-button-wide"></i><span>UploadRessources</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="components-nav2" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+          
+          <li>
+
+            <a  th:href="@{/files/new}">
+
+              <i class="bi bi-circle"></i><span>Ajouter sur Génie Mecanique</span>
+            </a>
+          </li>
+          <li>
+            <a th:href="@{/files2/new}">
+              <i class="bi bi-circle"></i><span>Ajouter sur Mathematiques Appliquees</span>
+            </a>
+          </li>
+          <li>
+            <a th:href="@{/files3/new}">
+              <i class="bi bi-circle"></i><span>Ajouter sur Génie Informatique</span>
+            </a>
+          </li>
+          <li>
+            <a th:href="@{/files4/new}">
+              <i class="bi bi-circle"></i><span>Ajouter sur Génie Electrique</span>
+            </a>
+          </li>
+          <li>
+            <a th:href="@{/files5/new}">
+              <i class="bi bi-circle"></i><span>Ajouter sur Langues/Communication</span>
+            </a>
+          </li>
+          <li>
+            <a th:href="@{/files6/new}">
+              <i class="bi bi-circle"></i><span>Ajouter sur Génie Economie et Management</span>
+            </a>
+          </li>
+          <li>
+            <a th:href="@{/files7/new}">
+              <i class="bi bi-circle"></i><span>Ajouter sur Génie Biomédical</span>
+            </a>
+          </li>
+          
+        </ul>
+      </li><!-- End Tables Nav -->
+  
      
       <li class="nav-item">
         <a class="nav-link collapsed" th:href="@{/adduser}">
@@ -238,16 +306,25 @@
       </li><!-- End Register Page Nav -->
 
      
+           <li class="nav-item">
+        <a class="nav-link collapsed" th:href="@{addLabo}">
+          <i class="bi bi-card-list"></i>
+          <span>Ajouter Labo</span>
+        </a>
+      </li><!-- End Register Page Nav -->
+
+
     </ul>
 
   </aside><!-- End Sidebar-->
 
 
 
- <main>
 
-  <div class="container-fluid" style="max-width: 600px; margin: 0 auto;">
-    <h2 class="text-center">List of Files</h2>
+ <main>
+	 
+ <div class="container-fluid" style="max-width: 600px; margin: 0 auto;">
+    <h2 class="text-center">Les Document de Département  Génie Mecanique </h2>
 
     <div th:if="${files.size() > 0}">
       <table class="table table-hover">
