@@ -49,29 +49,29 @@ Ce projet a été réalisé par [AbderrahmaneHamim] et [MohamedLemineTelmoudi] d
 Voici quelques captures d'écran de l'application GiLabs pour vous donner un aperçu visuel de ses fonctionnalités.
 
 ## Page d'Accueil
-![Page d'Accueil 1](images/Home1.png)
-![Page d'Accueil 2](images/Home2.png)
-![Page d'Accueil 3](images/Home3.png)
+![Page d'Accueil 1](Home1.png)
+![Page d'Accueil 2](Home2.png)
+![Page d'Accueil 3](Home3.png)
 
 ## Gestion des Laboratoires
-![Gestion des Laboratoires](images/Laboratoires.png)
+![Gestion des Laboratoires](Laboratoires.png)
 
 ## Page de Connexion
-![Page de Connexion](images/Login.png)
+![Page de Connexion](Login.png)
 
 ## Gestion des Départements
-![Gestion des Départements](images/Departments.png)
+![Gestion des Départements](Departments.png)
 
 ## Liste des Articles
-![Liste des Articles](images/AllArticles.png)
+![Liste des Articles](AllArticles.png)
 
 ## Ajouter un Document
-![Ajouter un Document](images/AjouterDocument.png)
+![Ajouter un Document](AjouterDocument.png)
 
 ## Ajouter un Utilisateur
-![Ajouter un Utilisateur](images/AjouterUtilisateur.png)
+![Ajouter un Utilisateur](AjouterUtilisateur.png)
 
 ## Ajouter un Article
-![Ajouter un Article](images/AjouterArticle.png)
+![Ajouter un Article](AjouterArticle.png)
 
 
